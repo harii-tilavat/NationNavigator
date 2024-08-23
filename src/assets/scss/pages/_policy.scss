@@ -1,0 +1,34 @@
+.policy-section {
+  .tc-container {
+    .tc-card {
+      .tc-header {
+        .tc-header-title {
+          @include font-size(40px);
+          font-family: $inter-bold;
+        }
+      }
+      .tc-body {
+        .tc-body-content {
+          .tc-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            .tc-list-item {
+              .tc-list-title {
+              }
+              .tc-list-content {
+                p {
+                  // styles for the paragraphs
+                  line-height: 1.6;
+                }
+                a {
+                  color: $primary-500;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

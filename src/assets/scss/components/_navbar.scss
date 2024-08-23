@@ -1,0 +1,129 @@
+.navbar-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  .navbar-container {
+    @include box-shadow-small(2px);
+    .top-navbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      .sidebar-icon {
+        transition: all 0.2s;
+        margin-left: 12px;
+        cursor: pointer;
+      }
+      .navbar-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 60px;
+        width: 100%;
+        gap: 20px;
+        .navbar-brand {
+          .brand {
+            span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 35px;
+              max-width: 160px;
+              width: auto;
+              cursor: pointer;
+            }
+          }
+        }
+        .navbar-list {
+          ul {
+            display: flex;
+            gap: 16px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            .nav-list-item {
+              cursor: pointer;
+              &.active {
+                font-family: $inter-semibold;
+              }
+            }
+          }
+        }
+        .navbar-search {
+          position: relative;
+          margin-left: auto;
+          .nav-search-form {
+            position: relative;
+            input {
+              padding-right: 2rem;
+            }
+            .search-icon {
+              @include font-size(14px);
+              position: absolute;
+              top: 0;
+              right: 12px;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: $gray-400;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include themed() {
+    .navbar-container {
+      // background-color: t($ngt-card);
+      background-color: $gray-900-blur;
+      backdrop-filter: blur(4px);
+      .top-navbar {
+        .sidebar-icon {
+        }
+        .navbar-content {
+          .navbar-brand {
+            .brand {
+              span {
+              }
+            }
+          }
+          .navbar-search {
+            .nav-search-form {
+              .search-icon {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .navbar-section {
+    .navbar-container {
+      .top-navbar {
+        .sidebar-icon {
+        }
+        .navbar-content {
+          .navbar-brand {
+            .brand {
+              span {
+                height: 30px;
+                max-width: 140px;
+              }
+            }
+          }
+          .navbar-search {
+            .nav-search-form {
+              .search-icon {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

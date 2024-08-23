@@ -1,0 +1,40 @@
+.category-tab {
+  .nav {
+    &.hop-tabs {
+      @include padding-bottom(12px);
+      border: 0;
+      border-bottom: 1px solid $gray-400;
+      .hop-item {
+        .hop-item-link {
+          cursor: pointer;
+          color: $primary-25;
+          border: 0;
+          @include padding(10px 11px);
+          @include margin(0 4px);
+          border-radius: 8px;
+          @include font-size(14px);
+          &.active,
+          &:hover {
+            background-color: $primary-500;
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .category-tab {
+    .nav {
+      &.hop-tabs {
+        .hop-item {
+          .hop-item-link {
+            @include font-size(12px);
+            &.active,
+            &:hover {
+            }
+          }
+        }
+      }
+    }
+  }
+}

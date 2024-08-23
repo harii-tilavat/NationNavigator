@@ -1,0 +1,77 @@
+<div class="grid-game-section" *ngIf="!false">
+  <div class="grid-game-container">
+    <div class="grid-game-title">
+      <div class="title">
+        <span>{{ gameCategory }} ({{displayGameList && displayGameList.length}})</span>
+      </div>
+      <div class="view-more" [routerLink]="routing" *ngIf="routing">
+        <span>View more</span>
+      </div>
+    </div>
+    <div class="grid-game-body" *ngIf="displayGameList && displayGameList.length">
+      <div class="grid-game-card-container normal" *ngIf="gameType === 'NORMAL'">
+        <div class="row g-2">
+          <ng-container *ngFor="let item of displayGameList; let i=index">
+            <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12" *ngIf="false &&  isAdShow && (i+1 === adNumber1 || i+1 === adNumber2); else showGame"> <!-- *ngIf="(i === 1 || i === 5) " -->
+              <div class="advertise-section-ps">
+                <div class="ad-title font-9 text-center mb-2">
+                  <span>ADVERTISEMENT</span>
+                </div>
+                <div class="ad-body">
+                  <ng-container *ngIf="i+1 === adNumber1; else showSecondAd">
+                    <!-- <div id="ps_ad_rotation_id_6915" class="d-flex justify-content-center"></div> -->
+                  </ng-container>
+                  <ng-template #showSecondAd>
+                    <!-- <div id="ps_ad_rotation_id_6983" class="d-flex justify-content-center"></div> -->
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+            <!-- Its pending -->
+            <ng-template #showGame>
+              <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6">
+                <a class="grid-game-card" (click)="playGame(item.id)">
+                  <div class="game-image">
+                    <img [src]="item.thumb" [alt]="item.title">
+                  </div>
+                  <div class="game-title">
+                    <span>{{item.title }}</span>
+                  </div>
+                </a>
+              </div>
+            </ng-template>
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="displayGameList.length > 12 && (i+1) % adsAfterGame === 0">
+              <div class="advertise-section py-4">
+                <div class="ad-title font-9 text-center mb-2">
+                  <span>ADVERTISEMENT</span>
+                </div>
+                <div class="ad-body">
+                  <div [id]='"div-gpt-ad-1719902603272-0-" + getNumber((i / adsAfterGame ))' style='min-width: 300px; min-height: 100px;'></div>
+                </div>
+                <!-- <app-hop-ad [adConfig]="adConfig"></app-hop-ad> -->
+                <!-- <h1>AD -> {{ getNumber((i / adsAfterGame ))}}</h1> -->
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="grid-game-card-container latest" *ngIf="gameType === 'LATEST'">
+        <div class="row g-3">
+          <div class="col-xxl-1 col-xl-2 col-lg-2 col-md-3 col-sm-3 col-6" *ngFor="let item of displayGameList">
+            <div class="grid-game-card">
+              <div class="game-image">
+                <img [src]="item.thumb" [alt]="item.title">
+              </div>
+              <div class="game-title">
+                <span>{{item.title}}</span>
+              </div>
+              <div class="game-play-button">
+                <button class="btn btn-primary" (click)="playGame(item.id)">Play Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

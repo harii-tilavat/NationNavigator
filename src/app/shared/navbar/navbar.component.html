@@ -1,0 +1,69 @@
+<div class="navbar-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="top-navbar">
+          <div class="sidebar-icon d-block d-md-none d-lg-none" (click)="sidebarToggle()">
+            <span><i [class]="'fa-solid ' + (!isSidebarOpen ? ' fa-x':'fa-bars')"></i></span>
+          </div>
+          <div class="navbar-content">
+            <div class="navbar-brand">
+              <div class="brand ms-2" (click)="goToHome()">
+                <span>
+                  <img src="/assets/icons/logo-dark.svg" alt="TestMyDevice">
+                   <!-- <tmd-icon name="power-off"></tmd-icon> -->
+                </span>
+              </div>
+            </div>
+            <div class="navbar-list">
+              <ul>
+                <li class="nav-list-item" routerLink="/webcam" routerLinkActive="active">Webcam</li>
+                <li class="nav-list-item" routerLink="/microphone" routerLinkActive="active">Microphone</li>
+                <li class="nav-list-item" routerLink="/headphones" routerLinkActive="active">Headphons</li>
+                <li class="nav-list-item" routerLink="/blog" routerLinkActive="active">Blog</li>
+              </ul>
+            </div>
+            <div class="navbar-search d-none d-sm-block ">
+              <form action="" [formGroup]="searchForm">
+                <div class="form-group nav-search-form p-0 m-0">
+                  <input type="text" class="form-control form-control-sm" placeholder="Search" formControlName="query"
+                    (focus)="focusMode = true">
+                  <div class="search-icon">
+                    <span>
+                      <i class="fa-magnifying-glass fa-solid"></i>
+                    </span>
+                  </div>
+                </div>
+              </form>
+              <div class="navbar-dropdown">
+                <div class="navbar-dropdown-content" *ngIf="focusMode && query">
+                  <ul>
+                    <ng-container *ngIf="displayGameList && displayGameList.length; else errorMessage">
+                      <li *ngFor="let item of displayGameList">
+                        <div class="nav-dropdown-item" (click)="goToGame(item.id)">
+                          <div class="dropdown-image">
+                            <span>
+                              <img [src]="item.thumb" [alt]="item.title">
+                            </span>
+                          </div>
+                          <div class="dropdown-title">
+                            <span>{{item.title}}</span>
+                          </div>
+                        </div>
+                      </li>
+                    </ng-container>
+                    <ng-template #errorMessage>
+                      <div class="game-not-found text-center py-2 px-4 font-8">
+                        <span>Game not found!</span>
+                      </div>
+                    </ng-template>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

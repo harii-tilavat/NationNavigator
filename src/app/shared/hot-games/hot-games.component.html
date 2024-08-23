@@ -1,0 +1,30 @@
+<div class="new-hot-game-section" style="height: 100vh; width: 100vw; overflow: hidden;">
+  <div class="iframe-container h-100 w-100">
+    <iframe width="100%" height="100%" [src]="selectedGameUrl | dompurify "></iframe>
+  </div>
+  <div class="g-ad-container">
+    <div class="ad-container">
+      <div class='sticky-ads top' id='sticky-ads-top'>
+        <div class='sticky-ads-close' onclick='document.getElementById("sticky-ads-top").style.display="none"' [ngClass]="{'d-none': !isCloseShow}">
+          <svg viewbox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M278.6 256l68.2-68.2c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-68.2-68.2c-6.2-6.2-16.4-6.2-22.6 0-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3l68.2 68.2-68.2 68.2c-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3 6.2 6.2 16.4 6.2 22.6 0l68.2-68.2 68.2 68.2c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6L278.6 256z' />
+          </svg>
+        </div>
+        <div class='sticky-ads-content advertise-section'>
+          <div id='google-ad-manager-1' style='min-width: 300px; min-height: 50px;'></div>
+        </div>
+      </div>
+
+      <div class='sticky-ads bottom' id='sticky-ads-bottom'>
+        <div class='sticky-ads-close' onclick='document.getElementById("sticky-ads-bottom").style.display="none"' [ngClass]="{'d-none': !isCloseShow}">
+          <svg viewbox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M278.6 256l68.2-68.2c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-68.2-68.2c-6.2-6.2-16.4-6.2-22.6 0-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3l68.2 68.2-68.2 68.2c-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3 6.2 6.2 16.4 6.2 22.6 0l68.2-68.2 68.2 68.2c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6L278.6 256z' />
+          </svg>
+        </div>
+        <div class='sticky-ads-content advertise-section'>
+          <div id='google-ad-manager-2' style='min-width: 300px; min-height: 50px;'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

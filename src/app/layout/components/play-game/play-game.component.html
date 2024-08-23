@@ -1,0 +1,32 @@
+<div class="layout-game-section play-game-section">
+  <div class="play-game-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="play-game-content">
+            <app-iframe-load [gameSuggestionList]="gameSuggestionList" [selectedGame]="selectedGame" [isLoading]="isLoading"></app-iframe-load>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="play-game-container mt-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="category-game-section">
+            <ng-container *ngIf="gameList && gameList.length; else notFound">
+              <app-grid-game [gameCategory]="'Games for you'" [gameList]="gameList" [routing]="'/category'" [isAdShow]="true"></app-grid-game>
+            </ng-container>
+            <ng-template #notFound>
+              <div class="not-found text-center py-2">
+                <h3>Game not found!</h3>
+                <hr>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

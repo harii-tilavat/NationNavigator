@@ -1,0 +1,48 @@
+<div class="layout-game-section recent-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="advertise-section mb-4">
+          <div class="ad-title font-9 text-center my-2 ">
+            <span>ADVERTISEMENT</span>
+          </div>
+          <div class="ad-body">
+            <!-- /23183718078/Hop_Bannersmart -->
+            <!-- <div id='div-gpt-ad-1719902603272-0' style='min-width: 300px; min-height: 100px;'></div> -->
+            <div id="hopgame-in-profitsence-300x250-01"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="recent-container">
+          <div class="game-main-container d-flex flex-column gap-28">
+            <div class="games-category-section recent-games">
+              <ng-container *ngIf="gameList && gameList.length; else notFound">
+                <app-grid-game [gameCategory]="'Recently played games'" [gameType]="'NORMAL'" [gameList]="gameList" [isAdShow]="true"></app-grid-game>
+              </ng-container>
+              <ng-template #notFound>
+                <div class="not-found text-center py-2">
+                  <h3>Game not found!</h3>
+                  <hr>
+                </div>
+              </ng-template>
+            </div>
+            <div class="advertise-section ps">
+            </div>
+            <!-- <div class="advertise-section pt-3 pb-2 d-flex justify-content-center">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="ad-container">
+                      <div id='div-gpt-ad-1717080550188-0' style='min-width: 300px; min-height: 250px;'></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

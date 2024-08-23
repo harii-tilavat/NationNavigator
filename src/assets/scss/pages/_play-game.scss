@@ -1,0 +1,126 @@
+.play-game-section {
+  user-select: none !important;
+  .play-game-container {
+    position: relative;
+    .play-game-content {
+      .play-game-main-contaniner {
+        position: relative;
+        min-height: 400px;
+        border-radius: 8px;
+        .play-game-box {
+          position: relative;
+          height: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+          .play-game-thumbnail {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 100%;
+            filter: brightness(0.4);
+            z-index: -1;
+            span {
+              img {
+                // styles for the game thumbnail image
+              }
+            }
+          }
+          .play-game-info {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            height: 100%;
+            padding: 18px;
+            .play-game-image {
+              span {
+                height: 130px;
+                width: 130px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 12px;
+                overflow: auto;
+                img {
+                  // styles for the play game image
+                }
+              }
+            }
+            .play-game-name {
+              @include font-size(24px);
+              font-family: $inter-semibold;
+              color: $primary-25;
+              span {
+                // styles for the game name
+              }
+            }
+            .play-game-button {
+              // styles for the play game button
+            }
+          }
+        }
+        .game-iframe-container {
+          background-color: $gray-700;
+        }
+        .screen-toggle-container {
+          position: absolute;
+          top: -12px;
+          right: -12px;
+          z-index: 1;
+          .screen-toggle-icon {
+            span {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 35px;
+              width: 35px;
+              border-radius: 100%;
+              @include font-size(10px);
+              background-color: $primary-500;
+              color: $primary-25;
+              cursor: pointer;
+            }
+          }
+        }
+        .game-loader {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .play-game-suggetion {
+      }
+      .about-game-section {
+        .about-game-header {
+          color: $primary-500;
+          font-family: $inter-semibold;
+          @include font-size(20px);
+          @include margin-bottom(20px);
+        }
+        .about-game-body {
+          display: flex;
+          flex-flow: column;
+          gap: 12px;
+          .about-game-title {
+            @include font-size(28px);
+            font-family: $inter-semibold;
+          }
+          .about-game-instruction {
+            @include font-size(17px);
+          }
+          .about-game-description {
+            @include font-size(14px);
+          }
+        }
+      }
+    }
+  }
+  .category-game-section {
+  }
+}

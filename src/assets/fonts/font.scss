@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "inter";
+  src: url("./inter-regular.ttf");
+}
+@font-face {
+  font-family: "inter-bold";
+  src: url("./inter-bold.ttf");
+}
+@font-face {
+  font-family: "inter-semibold";
+  src: url("./inter-semibold.ttf");
+}
+@font-face {
+  font-family: "inter-light";
+  src: url("./inter-light.ttf");
+}
+
+$inter: "inter", sans-serif;
+$inter-bold: "inter-bold", sans-serif;
+$inter-semibold: "inter-semibold", sans-serif;
+$inter-light: "inter-light", sans-serif;
+
+.inter {
+  font-family: $inter;
+}
+.inter-bold {
+  font-family: $inter-bold;
+}
+.inter-semibold {
+  font-family: $inter-semibold;
+}
+.inter-light {
+  font-family: $inter-light;
+}
+
+.font-1 {
+  font-size: 3rem; /* 48px */
+}
+
+.font-2 {
+  font-size: 2.5rem; /* 40px */
+}
+
+.font-3 {
+  font-size: 2rem; /* 32px */
+}
+
+.font-4 {
+  font-size: 1.75rem; /* 28px */
+}
+
+.font-5 {
+  font-size: 1.5rem; /* 24px */
+}
+
+.font-6 {
+  font-size: 1.25rem; /* 20px */
+}
+
+.font-7 {
+  font-size: 1rem; /* 16px */
+}
+
+.font-8 {
+  font-size: 0.875rem; /* 14px */
+}
+
+.font-9 {
+  font-size: 0.75rem; /* 12px */
+}
+
+.font-10 {
+  font-size: 0.625rem; /* 10px */
+}

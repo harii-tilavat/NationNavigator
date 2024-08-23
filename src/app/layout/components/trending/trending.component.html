@@ -1,0 +1,26 @@
+<div class="layout-game-section trending-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="trending-container">
+          <div class="game-main-container">
+            <app-iframe-load [gameSuggestionList]="gameList" [selectedGame]="selectedGame"></app-iframe-load>
+          </div>
+          <div class="game-main-container d-flex flex-column gap-28 mt-4">
+            <div class="games-category-section trending-games">
+              <ng-container *ngIf="gameList && gameList.length; else notFound">
+                <app-grid-game [gameCategory]="'Trending games'" [gameType]="'NORMAL'" [gameList]="gameList" [isAdShow]="true"></app-grid-game>
+              </ng-container>
+              <ng-template #notFound>
+                <div class="not-found text-center py-2">
+                  <h3>Game not found!</h3>
+                  <hr>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

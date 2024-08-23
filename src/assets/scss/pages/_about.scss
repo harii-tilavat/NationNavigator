@@ -1,0 +1,15 @@
+.about-section {
+  .about-container {
+    @include margin-top(32px);
+    .about-card {
+      .about-card-header {
+        @include padding-bottom(24px);
+        .about-card-header-title {
+
+        }
+      }
+      .about-card-body {
+      }
+    }
+  }
+}

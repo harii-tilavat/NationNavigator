@@ -1,0 +1,182 @@
+.sidebar-section {
+  @include box-shadow-small(2px);
+  .sidebar-container {
+    font-size: 14px;
+    height: 100%;
+    position: relative;
+    .sidebar-main {
+      .sidebar-menu {
+        height: calc(100vh - 60px);
+        overflow: auto;
+        padding-bottom: 50px;
+        .sidebar-menu-container {
+          padding: 12px;
+          .all-game-container {
+            .all-game-title {
+              cursor: pointer;
+              font-family: $inter-semibold;
+            }
+          }
+          .sidebar-menu-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-flow: column;
+            gap: 8px;
+            li {
+              // &:nth-child(1){
+              //   background-color: red;
+              // }
+              .sidebar-list-item {
+                padding: 8px 12px;
+                display: flex;
+                gap: 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: 0.1s;
+                &.active {
+                  background-color: $primary-500;
+                  color: $primary-25;
+                  .sidebar-list-icon {
+                    color: inherit;
+                  }
+                }
+                &:hover {
+                  gap: 18px;
+                }
+                .sidebar-list-icon {
+                  color: $primary-500;
+                  span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 17px;
+                    width: 17px;
+                  }
+                }
+                .sidebar-list-title {
+                }
+              }
+            }
+          }
+        }
+      }
+      .contact-link {
+        .contact-container {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          gap: 12px;
+          padding: 16px 24px;
+          // background-color: $primary-100;
+          // color: $primary-500;
+          cursor: pointer;
+          // bottom: 0;
+          .contact-icon {
+          }
+          .contact-title {
+            @include font-size(15px);
+            font-family: $inter-semibold;
+            transition: all 0.2s;
+            &:hover {
+              transform: translateX(10px);
+            }
+          }
+        }
+      }
+    }
+  }
+  @include themed() {
+    background-color: t($ngt-card);
+    color: t($text-color);
+    .sidebar-container {
+      .sidebar-main {
+        .sidebar-menu {
+          .sidebar-menu-container {
+            .all-game-container {
+              .all-game-title {
+              }
+            }
+            .sidebar-menu-list {
+              li {
+                .sidebar-list-item {
+                  &.active {
+                    .sidebar-list-icon {
+                    }
+                  }
+                  &:hover {
+                  }
+                  .sidebar-list-icon {
+                    span {
+                    }
+                  }
+                  .sidebar-list-title {
+                  }
+                }
+              }
+            }
+          }
+        }
+        .contact-link {
+          .contact-container {
+            background-color: $primary-500;
+            color: $primary-25;
+            .contact-icon {
+            }
+            .contact-title {
+              &:hover {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .sidebar-section {
+    .sidebar-container {
+      .sidebar-main {
+        .sidebar-menu {
+          .sidebar-menu-container {
+            .all-game-container {
+              .all-game-title {
+              }
+            }
+            .sidebar-menu-list {
+              li {
+                .sidebar-list-item {
+                  &.active {
+                    .sidebar-list-icon {
+                    }
+                  }
+                  &:hover {
+                  }
+                  .sidebar-list-icon {
+                    span {
+                    }
+                  }
+                  .sidebar-list-title {
+                  }
+                }
+              }
+            }
+          }
+        }
+        .contact-link {
+          .contact-container {
+            .contact-icon {
+            }
+            .contact-title {
+              &:hover {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

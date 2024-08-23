@@ -1,0 +1,77 @@
+$bg-color: "bg-color";
+$text-color: "text-color";
+$bg-color-light: "bg-color-light";
+// $dark-black: "dark-black";
+// $dark-black: "dark-black";
+// input prop
+$input-border: "input-border";
+$input-control-label: "input-control-label";
+
+// Basics
+$ngt-warning: "ngt-warning";
+$ngt-danger: "ngt-danger";
+$ngt-inverse: "ngt-inverse";
+$ngt-inverse-dark: "ngt-inverse-dark";
+$ngt-secondary: "ngt-secondary";
+
+// switchs radio
+$switch-bg: "switch-bg";
+$switch-border: "switch-border";
+$switch-color: "switch-color";
+
+// card
+$ngt-card: "ngt-card";
+
+$themes: (
+  light: (
+    bg-color: $primary-25,
+    bg-color-light: $gray-50,
+    text-color: $gray-900,
+    ngt-card: $primary-25,
+    input-border: $primary-200,
+    input-control-label: $gray-700,
+    ngt-warning: $yellow-700,
+    ngt-danger: $red-600,
+    ngt-inverse: $primary-25,
+    ngt-inverse-dark: $gray-900,
+    ngt-secondary: $primary-300,
+    switch-border:$gray-100
+  ),
+  dark: (
+    bg-color: $gray-900,
+    bg-color-light: $gray-800,
+    text-color: $primary-25,
+    ngt-card: $gray-700,
+    input-border: $gray-400,
+    input-control-label: $primary-50,
+    ngt-warning: $yellow-700,
+    ngt-danger: $red-600,
+    ngt-inverse: $gray-900,
+    ngt-inverse-dark: $primary-25,
+    ngt-secondary: $primary-300,
+    switch-border:$gray-400
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}

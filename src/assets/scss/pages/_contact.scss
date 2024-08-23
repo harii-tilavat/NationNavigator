@@ -1,0 +1,46 @@
+.contact-section {
+  .contact-container {
+    .contact-header {
+      @include padding(32px 0px);
+      text-align: center;
+      .contact-title {
+        @include font-size(30px);
+        font-family: $inter-semibold;
+      }
+    }
+    .contact-body {
+      .contact-card {
+        @include padding-bottom(40px);
+        border-radius: 16px;
+        .contact-card-header {
+          @include padding-bottom(24px);
+          @include font-size(18px);
+          font-family: $inter-semibold;
+        }
+        .contact-card-body {
+          .contact-card-form {
+          }
+        }
+      }
+    }
+  }
+  @include themed() {
+    .contact-container {
+      .contact-header {
+        .contact-title {
+        }
+      }
+      .contact-body {
+        .contact-card {
+          background-color: t($ngt-card);
+          .contact-card-header {
+          }
+          .contact-card-body {
+            .contact-card-form {
+            }
+          }
+        }
+      }
+    }
+  }
+}

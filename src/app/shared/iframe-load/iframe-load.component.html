@@ -1,0 +1,149 @@
+<div class="iframe-load-container">
+  <div class="play-game-section">
+    <div class="play-game-container">
+      <div class="play-game-content">
+        <div class="container-fluid p-0">
+          <div class="row g-3">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="advertise-section py-3">
+                <div class="ad-title font-9 text-center my-2 ">
+                  <span>ADVERTISEMENT</span>
+                </div>
+                <div class="ad-body">
+                  <!-- /23183718078/Hop_Bannersmart -->
+                  <div id='div-gpt-ad-1719902603272-0' style='min-width: 300px; min-height: 100px;'></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-12 col-sm-12">
+              <div class="play-game-main-contaniner h-100" id="fullscreen-element">
+                <ng-container *ngIf="!isLoading; else showLoading">
+                  <ng-container *ngIf="selectedGame; else gameNotFound">
+                    <ng-container *ngIf="!isPlayMode; else playModeOn">
+                      <div class="play-game-box">
+                        <div class="play-game-thumbnail">
+                          <span>
+                            <img [src]="selectedGame && selectedGame.thumbBig || selectedGame.thumb" [alt]="selectedGame.title">
+                            <!-- <img [src]="'/assets/games/flight-sim/images/bg-thumbnail.jpg'" [alt]="selectedGame.title"> -->
+                          </span>
+                        </div>
+                        <div class="play-game-info">
+                          <div class="play-game-image">
+                            <span>
+                              <img [src]="selectedGame.thumb" [alt]="selectedGame.title">
+                              <!-- <img [src]="'/assets/games/flight-sim/images/bg-square.jpg'" [alt]="selectedGame.title"> -->
+                            </span>
+                          </div>
+                          <div class="play-game-name">
+                            <span>{{ selectedGame.title }}</span>
+                          </div>
+                          <div class="play-game-button">
+                            <button class="btn btn-primary btn-xl" (click)="playGame()">Play Now</button>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                    <ng-template #playModeOn>
+                      <div class="game-iframe-container h-100">
+                        <iframe width="100%" height="100%" [src]="selectedGame.url | dompurify "></iframe>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                  <ng-template #gameNotFound>
+                    <div class="game-not-found py-5 text-center">
+                      <h1>Game not found!</h1>
+                    </div>
+                  </ng-template>
+                  <div class="screen-toggle-container" *ngIf="isPlayMode && !isFullScreen">
+                    <div class="screen-toggle-icon" (click)="requestFullScreen()">
+                      <span>
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                      </span>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-template #showLoading>
+                  <div class="game-loader">
+                    <div class="spinner-border text-light" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-12 col-sm-12">
+              <div class="play-game-suggetion grid-game-section">
+                <div class="grid-game-container">
+                  <div class="grid-game-body">
+                    <div class="grid-game-card-container normal">
+                      <div class="row g-3">
+                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-4 col-sm-4 col-6" *ngFor="let item of displayGameList">
+                          <!-- <a class="grid-game-card" [href]="gamePath + item.link" [target]="'_blank'"> -->
+                          <a class="grid-game-card" (click)="playNow(item.id)">
+                            <div class="game-image">
+                              <img [src]="item.thumb" [alt]="item.title">
+                            </div>
+                            <div class="game-title">
+                              <span>{{item.title}}</span>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="advertise-section py-3" style="min-height: 250px;">
+                            <div class="ad-title font-9 text-center my-2 ">
+                              <span>ADVERTISEMENT</span>
+                            </div>
+                            <div class="ad-body">
+                              <!-- /23183718078/HopBanner_320x480 BOXAD-->
+                              <div id='div-gpt-ad-1719924717785-0'></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <ng-container *ngIf="selectedGame && selectedGame.title && selectedGame.description && selectedGame.instructions">
+              <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                <div class="about-game-section mt-5 layout-card">
+                  <div class="about-game-header">
+                    <span>ABOUT GAMES</span>
+                  </div>
+                  <div class="about-game-body">
+                    <div class="about-game-title">
+                      <span>{{selectedGame && selectedGame.title}}</span>
+                    </div>
+                    <div class="about-game-instruction">
+                      <span>{{selectedGame && selectedGame.instructions}}</span>
+                    </div>
+                    <div class="about-game-description">
+                      <p class="m-0" [innerHTML]="selectedGame && selectedGame.description"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="row g-3 justify-content-center">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+              <div class="advertise-section pt-5 pb-2">
+                <div class="ad-title font-9 text-center my-2 ">
+                  <span>ADVERTISEMENT</span>
+                </div>
+                <div class="ad-body">
+                  <!-- /23183718078/bannerads_970x250_320x100 -->
+                  <div id='div-gpt-ad-1719924585166-0' style='min-width: 300px; min-height: 100px;'></div>
+                </div>
+                <!-- <app-hop-ad [adConfig]="adConfigSmallBanner"></app-hop-ad> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

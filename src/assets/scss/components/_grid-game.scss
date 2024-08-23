@@ -1,0 +1,171 @@
+.grid-game-section {
+  .grid-game-container {
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    .grid-game-title {
+      font-family: $inter-semibold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      .title {
+        @include font-size(20px);
+      }
+      .view-more {
+        color: $primary-500;
+        @include font-size(14px);
+        cursor: pointer;
+      }
+    }
+    .grid-game-body {
+      .grid-game-card-container {
+        &.normal {
+          .grid-game-card {
+            transition: all 0.2s;
+            cursor: pointer;
+            // max-width: 130px;
+            // max-height: 130px;
+            // min-height: 100%;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            color: $primary-25;
+            aspect-ratio: 1;
+            border: 2px solid transparent;
+            width: 100%;
+            height: 100%;
+            .game-image {
+              transition: all 0.2s;
+              width: 100%;
+            }
+            .game-title {
+              // opacity: 0;
+              display: none;
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              margin-bottom: 12px;
+              @include font-size(12px);
+              font-family: $inter-semibold;
+            }
+            &:hover {
+              opacity: 1;
+              transform: scale(1.05);
+              border: 2px solid $primary-700;
+              text-align: center;
+              // background: rgba(0, 0, 0, 0.1);
+              .game-image {
+                filter: brightness(50%);
+              }
+              .game-title {
+                // opacity: 1;
+                display: flex;
+                justify-content: center;
+                @include line-clamp(1);
+              }
+            }
+          }
+        }
+        &.latest {
+          .grid-game-card {
+            // background-color: $primary-100;
+            border-radius: 8px;
+            padding: 12px 0;
+            display: flex;
+            flex-flow: column;
+            gap: 8px;
+            align-items: center;
+            .game-image {
+              border-radius: 8px;
+              max-height: 100px;
+              max-width: 100px;
+              min-height: 100px;
+              overflow: hidden;
+              display: grid;
+              grid-template-columns: 1fr;
+            }
+            .game-title {
+              @include font-size(12px);
+              font-family: $inter-semibold;
+              @include line-clamp(1);
+            }
+          }
+        }
+      }
+    }
+  }
+  @include themed() {
+    .grid-game-container {
+      .grid-game-title {
+        .title {
+        }
+        .view-more {
+        }
+      }
+      .grid-game-body {
+        .grid-game-card-container {
+          &.normal {
+            .grid-game-card {
+              cursor: pointer;
+              .game-image {
+                background-color: $gray-700;
+              }
+              .game-title {
+              }
+              &:hover {
+              }
+            }
+          }
+          &.latest {
+            .grid-game-card {
+              background-color: t($ngt-card);
+              .game-image {
+              }
+              .game-title {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include media-breakpoint-down(md) {
+  .grid-game-section {
+    .grid-game-container {
+      .grid-game-title {
+        .title {
+          @include font-size(16px);
+        }
+        .view-more {
+        }
+      }
+      .grid-game-body {
+        .grid-game-card-container {
+          &.normal {
+            .grid-game-card {
+              cursor: pointer;
+              .game-image {
+              }
+              .game-title {
+              }
+              &:hover {
+              }
+            }
+          }
+          &.latest {
+            .grid-game-card {
+              .game-image {
+              }
+              .game-title {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

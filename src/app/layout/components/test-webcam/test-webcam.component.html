@@ -1,0 +1,76 @@
+<div class="layout-section webcam-section">
+    <div class="webcam-header-container layout-light" *ngIf="isTestingMode; else notTestingMode">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="webcam-inner-section py-5">
+                        <div class="webcam-container d-flex justify-content-center">
+                            <!-- <video #webcamElement width="640" height="480" autoplay></video> -->
+                            <webcam (initError)="handleInitError($event)"></webcam>
+                        </div>
+                        <button class="btn btn-primary" (click)="requestPermissions()">Get permission</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #notTestingMode>
+        <div class="landing-header">
+            <app-tmd-heading [description]="'To start the Webcam test, you do not need any programs, just click on the button below. If your camera is operational, you will see yourself on the screen.'" (startTestingEvent)="startTesting()" [deviceName]="'Webcame'"></app-tmd-heading>
+        </div>
+    </ng-template>
+    <div class="about-container py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="about-section">
+                        <div class="about-container">
+                            <div class="about-card">
+                                <div class="about-card-header">
+                                    <div class="about-card-header-title">
+                                        <span class="inter-semibold font-4">About TestMyDevice</span>
+                                    </div>
+                                </div>
+                                <div class="about-card-body">
+                                    <p>Welcome to <strong>TestMyDevice</strong>, your go-to solution for quick and
+                                        reliable testing of
+                                        headphones, microphones, and webcams. We are dedicated to helping you ensure
+                                        your audio and video
+                                        devices are functioning at their best.</p>
+
+                                    <p>At <strong>TestMyDevice</strong>, we understand the importance of clear
+                                        communication and
+                                        high-quality sound and video. Our platform provides easy-to-use tools to test
+                                        and verify your
+                                        devices,
+                                        giving you peace of mind.</p>
+
+                                    <p>Our mission is to make device testing accessible to everyone, from casual users
+                                        to professionals.
+                                        We
+                                        believe that checking your equipment should be straightforward and hassle-free.
+                                    </p>
+
+                                    <p>With <strong>TestMyDevice</strong>, you can perform comprehensive tests on your
+                                        headphones,
+                                        microphones, and webcams in just a few clicks. We strive to offer an intuitive
+                                        user experience that
+                                        saves you time and effort.</p>
+
+                                    <p>We are committed to continuous improvement and innovation. By staying up-to-date
+                                        with the latest
+                                        technologies, we ensure that our tools meet your evolving needs.</p>
+
+                                    <p>Thank you for choosing <strong>TestMyDevice</strong>. We are here to support you
+                                        in achieving the
+                                        best performance from your audio and video devices.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

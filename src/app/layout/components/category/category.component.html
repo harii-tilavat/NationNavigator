@@ -1,0 +1,23 @@
+<div class="layout-game-section category-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="game-main-container mb-4">
+          <app-iframe-load [gameSuggestionList]="gameListCategory" [selectedGame]="selectedGame" [isLoading]="isLoading"></app-iframe-load>
+        </div>
+      </div>
+      <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="category-game-section">
+          <app-grid-game [gameCategory]="gameCategory" [gameList]="gameListCategory" [isAdShow]="true"></app-grid-game>
+        </div>
+      </div>
+      <!-- <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="pagination-section">
+          <h1>Hello World</h1>
+          <button class="btn btn-primary" (click)="previousPage()" [disabled]="(pagination.startIndex === 0)">Back {{pagination.page - 1}}</button>
+          <button class="btn btn-primary" (click)="nextPage()" [disabled]="(pagination.endIndex > gameListCategory.length - 1)">Next {{pagination.page}} </button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
