@@ -23,13 +23,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (!this.browserService.isBrowser()) return;
     try {
-      this.isAccepted = Boolean(this.cookieService.get("USER_AGREEMENT"));
-      if (!this.isAccepted) {
-        this.isPopupShow = true;
-      }
-
-      this.adService.registerInterstitalAd().then(() => { console.log("Register Interstitial!") }).catch(() => { }); // Register Interstitial
-      this.adService.setupRefreshInterval().then(() => { console.log("REFRESH START! ") }).catch((err) => { console.log("ERROR IN REFRESH : ", err) });
     } catch (error) {
       console.log("ERROR in refresh : ", error);
     }
@@ -40,10 +33,10 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     const appTitle = this.titleService.getTitle();
     this.subscription.push(this.router.events.pipe(filter(event => event instanceof NavigationEnd), map((res) => {
       // Set canonical URL
-      let canonicalURL = this.titleService.getCanonicalUrl();
+      // let canonicalURL = this.titleService.getCanonicalUrl();
       // console.log("NAVIGATION : ");
 
-      this.titleService.setCanonicalURL(canonicalURL);
+      // this.titleService.setCanonicalURL(canonicalURL);
       let child = this.activatedRoute.firstChild as ActivatedRoute;
       while (child.firstChild) {
         child = child.firstChild;
@@ -59,15 +52,15 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.titleService.getMeta();
   }
   isCookieAccepted(): void {
-    this.cookieService.set('USER_AGREEMENT', 'true', { path: '/', expires: 30, sameSite: 'Strict' });
-    this.isAccepted = Boolean(this.cookieService.get('USER_AGREEMENT'));
-    if (!this.isAccepted) {
-      this.isPopupShow = false;
-    }
+    // this.cookieService.set('USER_AGREEMENT', 'true', { path: '/', expires: 30, sameSite: 'Strict' });
+    // this.isAccepted = Boolean(this.cookieService.get('USER_AGREEMENT'));
+    // if (!this.isAccepted) {
+    //   this.isPopupShow = false;
+    // }
     // this.cd.detectChanges();
   }
   ngOnDestroy(): void {
-    this.adService.clearRefreshInterval();
+    // this.adService.clearRefreshInterval();
     if (this.subscription) {
       this.subscription.forEach(item => item.unsubscribe());
     }

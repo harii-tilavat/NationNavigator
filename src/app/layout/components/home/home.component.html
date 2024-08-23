@@ -1,8 +1,35 @@
 <div class="layout-section home-section">
-  <div class="landing-header">
-    <app-tmd-heading [description]="'To start the webcam test, you do not need any programs, just click on the button below. If your camera is operational, you will see yourself on the screen.'" (startTestingEvent)="startTesting($event)" [deviceName]="'Webcam'"></app-tmd-heading>
+  <div class="landing-container py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="search-header ">
+            <form class="form" [formGroup]="searchForm">
+              <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Search for a topic" formControlName="query">
+              <label for="search" class="search-label">
+                <span class="search-icon">
+                  <!-- <tmd-icon name="search"></tmd-icon> -->
+                </span>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="country-list">
+            <div class="row g-4">
+              <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of countryList">
+                <div class="country-card-container">
+                  <app-country-card [countryInfo]="item"></app-country-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="about-container py-3">
+  div.contry
+  <div class="about-container py-3 layout-light">
     <div class="container">
       <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -11,7 +38,7 @@
               <div class="about-card">
                 <div class="about-card-header">
                   <div class="about-card-header-title">
-                    <span class="inter-semibold font-4">About TestMyDevice</span>
+                    <span class="inter-semibold font-4">About NationNavigator</span>
                   </div>
                 </div>
                 <div class="about-card-body">

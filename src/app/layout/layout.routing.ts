@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      { path: '', component: HomeComponent, data: { title: 'HopGame Home' } },
+      { path: '', component: HomeComponent, data: { title: 'Country finder - Nation Navigator' } },
       { path: 'webcam', component: TestWebcamComponent, data: { title: 'Test Webcam ' } },
       { path: 'headphones', component: TestHeadphonesComponent, data: { title: 'Test Headphones ' } },
       { path: 'microphone', component: TestMicrophoneComponent, data: { title: 'Test Microphone ' } },

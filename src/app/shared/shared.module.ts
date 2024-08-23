@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SidePopupComponent } from './ads/side-popup/side-popup.component';
 import { IconsModule } from "../icons/icons.module";
 import { TmdHeadingComponent } from './tmd-heading/tmd-heading.component';
+import { CountryCardComponent } from './country-card/country-card.component';
 
 
 
@@ -34,6 +35,7 @@ import { TmdHeadingComponent } from './tmd-heading/tmd-heading.component';
     HotGamesComponent,
     SidePopupComponent,
     TmdHeadingComponent,
+    CountryCardComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { TmdHeadingComponent } from './tmd-heading/tmd-heading.component';
     HopAdComponent,
     VideoAdPopupComponent,
     SidePopupComponent,
-    TmdHeadingComponent
+    TmdHeadingComponent,
+    CountryCardComponent
   ],
   // providers:[GameService]
 })
