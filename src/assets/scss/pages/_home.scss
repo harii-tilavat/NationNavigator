@@ -1,16 +1,18 @@
-.layout-section{
-    .landing-section{
-        @include padding(11rem 0);
-        .landing-section-container{
-            .landing-section-title{
-
-            }
-            .landing-section-content{
-
-            }
-            .landing-section-cta{
-
-            }
-        }
+.layout-section {
+  .landing-section {
+    @include padding(11rem 0);
+    .landing-section-container {
+      .landing-section-title {
+      }
+      .landing-section-content {
+      }
+      .landing-section-cta {
+      }
     }
+  }
+  &.home-section {
+    .landing-container {
+      min-height: calc(80vh - 60px);
+    }
+  }
 }

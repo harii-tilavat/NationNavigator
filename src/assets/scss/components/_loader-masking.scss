@@ -63,6 +63,7 @@ $ph-animation-duration: 0.8s !default;
   // THEME CONTAINER
   @include themed() {
     background-color: t($ngt-card);
+    @include box-shadow-navbar();
     .ph-picture {
       background-color: t($ngt-card-line);
     }

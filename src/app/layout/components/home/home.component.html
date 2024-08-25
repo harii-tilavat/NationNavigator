@@ -5,21 +5,20 @@
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="search-header ">
             <form class="form" [formGroup]="searchForm">
-              <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Search for a topic" formControlName="query">
+              <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Enter country name..." formControlName="query">
               <label for="search" class="search-label">
                 <span class="search-icon">
                   <!-- <tmd-icon name="search"></tmd-icon> -->
                 </span>
               </label>
             </form>
-            <button class="btn btn-primary">Click</button>
           </div>
         </div>
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="country-list">
             <div class="row g-4">
-              <ng-container *ngIf="isLoading; else showLoader">
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of countryList">
+              <ng-container *ngIf="!isLoading; else showLoader">
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of displayCountryList">
                   <div class="country-card-container">
                     <app-country-card [countryInfo]="item"></app-country-card>
                   </div>
@@ -44,6 +43,13 @@
                   </div>
                 </div>
               </ng-template>
+              <ng-container *ngIf="!isLoading && !displayCountryList.length">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="error-message text-center ">
+                    <p>No countries found matching your criteria. Please try again with different search terms.</p>
+                  </div>
+                </div>
+              </ng-container>
             </div>
           </div>
         </div>
