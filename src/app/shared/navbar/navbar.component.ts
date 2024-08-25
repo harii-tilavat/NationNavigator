@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
-import { GameService, SidebarService } from '../../_services';
+import { BrowserService, GameService, SidebarService } from '../../_services';
 import { GameList, GameListCategory } from '../../../assets/game';
 import { environment } from '../../../environments/environment';
 import { GameModel } from '../../_model';
@@ -14,50 +14,38 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnDestroy {
   public isSidebarOpen = true;
   public subscription: Subscription[] = [];
-  public gameList: Array<GameModel> = [];
-  public displayGameList: Array<GameModel> = [];
-  public focusMode = false;
   public query !: string;
+  public isDarkMode = true;
   public searchForm: FormGroup = new FormGroup({
     query: new FormControl(null, []),
   });
-  constructor(private sidebarService: SidebarService, private router: Router, private gameService: GameService) { }
+  constructor(private sidebarService: SidebarService, private router: Router, private gameService: GameService, private browserService: BrowserService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.gameList = GameListCategory.sort((a, b) => {
-      return a.title < b.title ? -1 : 1
-    });
-    // this.displayGameList = this.gameList.slice(0, 6);
-    this.subscription.push(this.sidebarService.isSidebarOpen.subscribe({
-      next: (res: boolean) => {
-        this.isSidebarOpen = res;
-      }
-    }));
-    // .pipe(debounceTime(800)) -> after valueChanges ;
-    this.subscription.push(this.searchForm.controls['query'].valueChanges.subscribe({
-      next: (res: string) => {
-        this.query = res;
-        this.displayGameList = this.gameList.filter(i => i.title.toLowerCase().startsWith(this.query));
-      }
-    }));
-  }
-  goToGame(name: string) {
-    this.gameService.playMode.next(false);
-    this.router.navigate(['/game', name]);
-    this.resetForm();
+    if (!this.browserService.isBrowser()) return;
+    const storedTheme = localStorage.getItem('theme');
+    this.isDarkMode = storedTheme === 'dark';
+
+    // Apply the retrieved theme
+    this.applyTheme();
   }
   goToHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     this.sidebarService.activateMenu(-1);
   }
   sidebarToggle(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
     this.sidebarService.isSidebarOpen.next(this.isSidebarOpen);
   }
-  resetForm() {
-    this.searchForm.reset();
-    this.displayGameList = [];
-    this.query = '';
+  toggleTheme(): void {
+    if (!this.browserService.isBrowser()) return;
+    this.applyTheme();
+  }
+  applyTheme(): void {
+    const htmlElement = document.getElementsByTagName('html')[0];
+    this.renderer.addClass(htmlElement, this.isDarkMode ? 'theme-dark' : 'theme-light');
+    this.renderer.removeClass(htmlElement, this.isDarkMode ? 'theme-light' : 'theme-dark');
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
   }
   ngOnDestroy(): void {
     if (this.subscription) {

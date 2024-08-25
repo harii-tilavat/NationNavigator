@@ -24,10 +24,10 @@
                 <li>Find Country</li>
               </ul>
             </div>
-            <div class="navbar-search d-none d-sm-block ">
+            <div class="navbar-search d-none ">
               <form action="" [formGroup]="searchForm">
                 <div class="form-group nav-search-form p-0 m-0">
-                  <input type="text" class="form-control form-control-sm" placeholder="Search" formControlName="query" (focus)="focusMode = true">
+                  <input type="text" class="form-control form-control-sm" placeholder="Search" formControlName="query">
                   <div class="search-icon">
                     <span>
                       <i class="fa-magnifying-glass fa-solid"></i>
@@ -35,7 +35,7 @@
                   </div>
                 </div>
               </form>
-              <div class="navbar-dropdown">
+              <!-- <div class="navbar-dropdown">
                 <div class="navbar-dropdown-content" *ngIf="focusMode && query">
                   <ul>
                     <ng-container *ngIf="displayGameList && displayGameList.length; else errorMessage">
@@ -58,6 +58,16 @@
                       </div>
                     </ng-template>
                   </ul>
+                </div>
+              </div> -->
+            </div>
+            <div class="navbar-theme-icon ms-auto">
+              <div class="theme-switch">
+                <div class="toggle-switch">
+                  <label class="switch-label">
+                    <input type="checkbox" class="checkbox" [(ngModel)]="isDarkMode" (ngModelChange)="toggleTheme()">
+                    <span class="slider"></span>
+                  </label>
                 </div>
               </div>
             </div>

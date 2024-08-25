@@ -12,23 +12,44 @@
                 </span>
               </label>
             </form>
+            <button class="btn btn-primary">Click</button>
           </div>
         </div>
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="country-list">
             <div class="row g-4">
-              <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of countryList">
-                <div class="country-card-container">
-                  <app-country-card [countryInfo]="item"></app-country-card>
+              <ng-container *ngIf="isLoading; else showLoader">
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of countryList">
+                  <div class="country-card-container">
+                    <app-country-card [countryInfo]="item"></app-country-card>
+                  </div>
                 </div>
-              </div>
+              </ng-container>
+              <ng-template #showLoader>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]">
+                  <div class="country-card-container-loader">
+                    <div class="ph-item h-100 ph-card">
+                      <div class="ph-col-12">
+                        <div class="ph-picture image-sm"></div>
+                        <div class="ph-row" *ngFor="let line of [1,2,3]">
+                          <div class="ph-col-4 "></div>
+                          <div class="ph-col-2 empty"></div>
+                          <div class="ph-col-6 "></div>
+                          <!-- <div class="ph-col-12 big"></div>
+                          <div class="ph-col-12 big mt-2"></div>
+                          <div class="ph-col-12 "></div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  div.contry
   <div class="about-container py-3 layout-light">
     <div class="container">
       <div class="row">

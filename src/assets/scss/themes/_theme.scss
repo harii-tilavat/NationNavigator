@@ -21,13 +21,18 @@ $switch-color: "switch-color";
 
 // card
 $ngt-card: "ngt-card";
+$ngt-card-line: "ngt-card-line";
+
+// Loader
+$ngt-loader: "ngt-loader";
 
 $themes: (
   light: (
     bg-color: $primary-25,
     bg-color-light: $gray-100,
     text-color: $gray-900,
-    ngt-card: $primary-25,
+    ngt-card: $gray-100,
+    ngt-card-line: $primary-25,
     input-border: $primary-200,
     input-control-label: $gray-700,
     ngt-warning: $yellow-700,
@@ -35,13 +40,15 @@ $themes: (
     ngt-inverse: $primary-25,
     ngt-inverse-dark: $gray-900,
     ngt-secondary: $primary-300,
-    switch-border:$gray-100
+    switch-border: $gray-100,
+    ngt-loader: $gray-100,
   ),
   dark: (
     bg-color: $gray-900,
     bg-color-light: $gray-800,
     text-color: $primary-25,
     ngt-card: $gray-700,
+    ngt-card-line: $gray-800,
     input-border: $gray-400,
     input-control-label: $primary-50,
     ngt-warning: $yellow-700,
@@ -49,7 +56,8 @@ $themes: (
     ngt-inverse: $gray-900,
     ngt-inverse-dark: $primary-25,
     ngt-secondary: $primary-300,
-    switch-border:$gray-400
+    switch-border: $gray-400,
+    ngt-loader: $gray-700,
   ),
 );
 

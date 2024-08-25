@@ -1,5 +1,5 @@
 {
-  "name": "test-my-device",
+  "name": "nation-navigator",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,8 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:ssr": "ng build --c=production",
-    "serve:ssr": "node dist/test-my-device/server/server.mjs",
-    "prerender": "ng run test-my-device:prerender",
+    "serve:ssr": "node dist/nation-navigator/server/server.mjs",
+    "prerender": "ng run nation-navigator:prerender",
     "icons": "svg-to-ts-files svg-to-ts"
   },
   "private": true,

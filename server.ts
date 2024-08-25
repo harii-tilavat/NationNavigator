@@ -8,7 +8,7 @@ import AppServerModule from './src/main.server';
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve('dist/top-game/browser');
+  const browserDistFolder = resolve('dist/nation-navigator/browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
   const commonEngine = new CommonEngine();
