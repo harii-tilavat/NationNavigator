@@ -3,7 +3,7 @@ export interface CountryModel {
     tld?: string[];
     cca2?: string;
     ccn3?: string;
-    cca3?: string;
+    cca3: string;
     cioc?: string;
     independent?: boolean;
     status?: string;

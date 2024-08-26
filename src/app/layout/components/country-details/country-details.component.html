@@ -1,0 +1,67 @@
+<div class="layout-section country-section">
+    <div class="cd-container py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="cd-back-box">
+                        <button class="btn btn-primary-outline" (click)="goToBack()">Back</button>
+                    </div>
+                </div>
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="cd-info-container">
+                        <div class="row g-3" *ngIf="countryInfo">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <div class="cd-flag-image">
+                                    <span>
+                                        <img [src]="countryInfo.flags && (countryInfo.flags.png || countryInfo.flags.png)" alt="">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <div class="cd-info-box">
+                                    <div class="cd-info-header">
+                                        <div class="cd-info-title">
+                                            <h1>{{countryInfo.name.common}}</h1>
+                                        </div>
+                                    </div>
+                                    <div class="cd-info-body">
+                                        <ul class="cd-info-list">
+                                            <li class="cd-info-item" *ngFor="let item of [1,2,3,4,5]">
+                                                <span class="cd-info-item-key">Native name</span>
+                                                <span class="cd-info-item-value">India</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="cd-info-footer">
+                                        <div class="bc-list-box">
+                                            <div class="bc-list-title">
+                                                <span>Border Countries:</span>
+                                            </div>
+                                            <div class="bc-list">
+                                                <div class="bc-list-item" *ngFor="let item of [1,2,3,4,5]">
+                                                    <button class="btn btn-primary-outline">{{countryInfo.cca3}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12" *ngIf="false">
+                    <div class="cd-map-container">
+                        <div class="row g-3" *ngIf="countryInfo">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

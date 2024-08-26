@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     query: new FormControl('')
   });
   public subscription: Array<Subscription> = [];
-  public isLoading = true;
+  public isLoading = false;
   public countryList: Array<CountryModel> = [];
   public displayCountryList: Array<CountryModel> = [];
 
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!this.browserService.isBrowser()) return;
-
+    this.isLoading = true;
     this.subscription.push(this.searchForm.controls['query'].valueChanges.pipe(
       tap(() => this.isLoading = true),
       debounceTime(800),

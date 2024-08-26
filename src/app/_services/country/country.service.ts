@@ -8,23 +8,25 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CountryService extends BaseProviderService {
-  private fetchUrl = 'https://restcountries.com/v3.1/all';
-  private fetchUrlByName = 'https://restcountries.com/v3.1/name';
+  private fetchUrl = 'https://restcountries.com/v3.1';
   constructor(http: HttpClient) {
     super(http);
   }
 
   getAllCountry(): Observable<Array<CountryModel>> {
-    return this.makeGetCall(this.fetchUrl).pipe(map(res => res));
+    return this.makeGetCall(this.fetchUrl + '/all').pipe(map(res => res));
   }
   getCountryByName(name: string): Observable<CountryModel[]> {
-    const url = `${this.fetchUrlByName}/${name}`;
+    const url = `${this.fetchUrl}/name/${name}`;
     return this.makeGetCall(url).pipe(
       map(res => res),
       catchError(error => {
-        console.error(`Error fetching country by name (${name}):`, error);
+        console.log(`Error fetching country by name (${name}):`, error);
         return of([]); // Return an empty array in case of error
       })
     );
+  }
+  getCountryDetailsByCode(code: string): Observable<Array<CountryModel>> {
+    return this.makeGetCall(`${this.fetchUrl}/alpha/${code}`).pipe(map(res => res));
   }
 }
