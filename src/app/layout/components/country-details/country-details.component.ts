@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CountryModel } from '../../../_model';
 import { ActivatedRoute } from '@angular/router';
-import { BrowserService, CountryService } from '../../../_services';
+import { BrowserService, CountryService, TitleService } from '../../../_services';
 
 @Component({
   selector: 'app-country-details',
@@ -13,7 +13,8 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   public subscription: Subscription[] = [];
   public countryInfo!: CountryModel;
   public isLoading = false;
-  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService, private browserService: BrowserService) { }
+  public languages: Array<string> = [];
+  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService, private browserService: BrowserService, private titleService: TitleService) { }
 
   ngOnInit(): void {
     if (!this.browserService.isBrowser()) return;
@@ -34,7 +35,13 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
           console.log(res);
           if (res && res.length) {
             this.countryInfo = res[0];
+            this.setTitle(this.countryInfo.name.common)
             this.isLoading = false;
+            if (this.countryInfo.languages) {
+              for (let item in this.countryInfo.languages) {
+                if (this.languages.length <= 3) this.languages.push(this.countryInfo.languages[item]);
+              }
+            }
           }
         }, error: (err) => {
           console.log("ERROR : ", err);
@@ -45,6 +52,9 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   }
   goToBack(): void {
     history && history.back();
+  }
+  setTitle(title?: string) {
+    this.titleService.setTitle('Country finder - ' + (title || ''));
   }
   ngOnDestroy(): void {
     this.subscription.forEach(i => i.unsubscribe());

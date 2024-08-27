@@ -38,6 +38,16 @@ $ph-animation-duration: 0.8s !default;
     // @include box-shadow-card(top);
     padding: $ph-gutter ($ph-gutter * 0.5) ($ph-gutter - $ph-spacer)
       ($ph-gutter * 0.5);
+    @include box-shadow-navbar();
+    &.transperent {
+      padding: 0;
+      background-color: transparent;
+      box-shadow: none;
+      .ph-col-12 {
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
 
   &::before {
@@ -63,7 +73,6 @@ $ph-animation-duration: 0.8s !default;
   // THEME CONTAINER
   @include themed() {
     background-color: t($ngt-card);
-    @include box-shadow-navbar();
     .ph-picture {
       background-color: t($ngt-card-line);
     }

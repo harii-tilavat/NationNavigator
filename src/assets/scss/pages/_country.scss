@@ -1,0 +1,90 @@
+.layout-section {
+  &.country-section {
+    .cd-container {
+      .container {
+        .cd-back-box {
+        }
+        .cd-info-container {
+          .cd-flag-image {
+            span {
+              display: block;
+              border-radius: 8px;
+              overflow: hidden;
+              img {
+                // Styles for the flag image
+              }
+            }
+          }
+          .cd-info-box {
+            display: flex;
+            flex-flow: column;
+            gap: 28px;
+            .cd-info-header {
+              .cd-info-title {
+                h2 {
+                  // Styles for country name
+                  font-family: $inter-bold;
+                  font-weight: normal;
+                }
+              }
+            }
+            .cd-info-body {
+              .cd-info-list-box {
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                .cd-info-list {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  flex-flow: column;
+                  gap: 8px;
+                  
+                  .cd-info-item {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    .cd-info-item-key {
+                      font-family: $inter-semibold;
+                    }
+                    .cd-info-item-value {
+                      @include font-size(14px);
+                      .badge{
+                        @include font-size(12px);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .cd-info-footer {
+              .bc-list-box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+                .bc-list-title {
+                  span {
+                    // Styles for "Border Countries" text
+                  }
+                }
+                .bc-list {
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  .bc-list-item {
+                  }
+                }
+              }
+            }
+          }
+        }
+        .cd-map-container {
+        }
+      }
+    }
+  }
+}
