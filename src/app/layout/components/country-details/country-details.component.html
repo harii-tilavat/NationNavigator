@@ -24,47 +24,53 @@
                                             </div>
                                         </div>
                                         <div class="cd-info-body">
-                                            <div class="cd-info-list-box flex-sm-row flex-column">
-                                                <ul class="cd-info-list">
-                                                    <li class="cd-info-item">
-                                                        <span class="cd-info-item-key">Native Name :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.name.common}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item">
-                                                        <span class="cd-info-item-key">Population :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.population}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item">
-                                                        <span class="cd-info-item-key">Region :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.region}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item" *ngIf="countryInfo.subregion">
-                                                        <span class="cd-info-item-key">Sub Region :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.subregion}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item" *ngIf="countryInfo.subregion">
-                                                        <span class="cd-info-item-key">Capital :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.capital}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item" *ngIf="countryInfo.maps && countryInfo.maps.googleMaps">
-                                                        <span class="cd-info-item-key">Google map :</span>
-                                                        <span class="cd-info-item-value">
-                                                            <a [href]="countryInfo.maps.googleMaps" target="_blank">{{countryInfo.maps.googleMaps}}</a>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                                <ul class="cd-info-list">
-                                                    <li class="cd-info-item">
-                                                        <span class="cd-info-item-key">Area :</span>
-                                                        <span class="cd-info-item-value">{{countryInfo.area}}</span>
-                                                    </li>
-                                                    <li class="cd-info-item">
-                                                        <span class="cd-info-item-key">Languages : </span>
-                                                        <span class="cd-info-item-value d-flex gap-2">
-                                                            <span class="badge bg-dark inter-semibold" *ngFor="let item of languages">{{item}}</span>
-                                                        </span>
-                                                    </li>
-                                                </ul>
+                                            <div class="cd-info-list-box">
+                                                <div class="row">
+                                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                        <ul class="cd-info-list">
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Native Name :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.name.common}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Population :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.population}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Region :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.region}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.subregion">
+                                                                <span class="cd-info-item-key">Sub Region :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.subregion}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.subregion">
+                                                                <span class="cd-info-item-key">Capital :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.capital}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.maps && countryInfo.maps.googleMaps">
+                                                                <span class="cd-info-item-key">Google map :</span>
+                                                                <span class="cd-info-item-value">
+                                                                    <a [href]="countryInfo.maps.googleMaps" target="_blank">View on Google Maps</a>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                        <ul class="cd-info-list">
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Area :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.area}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Languages : </span>
+                                                                <span class="cd-info-item-value d-flex gap-2">
+                                                                    <span class="badge bg-dark inter-semibold" *ngFor="let item of languages">{{item}}</span>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="cd-info-footer" *ngIf="countryInfo.borders && countryInfo.borders.length">

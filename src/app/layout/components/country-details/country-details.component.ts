@@ -23,7 +23,6 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
       this.activatedRoute.params.subscribe((res) => {
         if (res && res['code']) {
           this.getCountryDetailsByCode(res['code']);
-          console.log("RES : ", res);
         }
       })
     );
@@ -32,7 +31,6 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.countryService.getCountryDetailsByCode(code).subscribe({
         next: (res: Array<CountryModel>) => {
-          console.log(res);
           if (res && res.length) {
             this.countryInfo = res[0];
             this.setTitle(this.countryInfo.name.common)

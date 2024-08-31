@@ -91,16 +91,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   });
   public subscription: Array<Subscription> = [];
   public isLoading = true;
+  public sortBy: string = "";
+  public sortOptions = [
+    { value: 'NAME', label: 'Name' },
+    { value: 'POPULATION', label: 'Population' },
+    { value: 'AREA', label: 'Area' },
+  ];
   public countryList: Array<CountryModel> = [];
   public displayCountryList: Array<CountryModel> = [];
-
+  public sortOrder: 'ASC' | 'DESC' = 'ASC';
   constructor(public adService: AdService, private browserService: BrowserService, private router: Router, private countryService: CountryService) { }
 
   ngOnInit(): void {
     if (!this.browserService.isBrowser()) return;
     this.subscription.push(this.searchForm.controls['query'].valueChanges.pipe(
       tap(() => this.isLoading = true),
-      debounceTime(800),
+      debounceTime(500),
       distinctUntilChanged(),
       tap(query => {
         if (!query) {
@@ -125,7 +131,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.countryService.getAllCountry().pipe(
         tap(() => this.isLoading = true),
         tap(res => {
-          console.log("Response : ", res);
+          // console.log("Response : ", res);
           this.countryList = res;
           this.displayCountryList = [...this.countryList];
         }),
@@ -138,13 +144,26 @@ export class HomeComponent implements OnInit, OnDestroy {
       ).subscribe()
     );
   }
+  onChangeSortBy(sortBy: string): void {
+    const sortStrategies: { [key: string]: (a: any, b: any) => number } = {
+      NAME: (a, b) => (a?.name?.common || '').localeCompare(b?.name?.common || ''),
+      POPULATION: (a, b) => (a?.population || 0) - (b?.population || 0),
+      AREA: (a, b) => (a?.area || 0) - (b?.area || 0),
+    };
 
+    if (sortStrategies[sortBy]) {
+      this.displayCountryList.sort((a, b) =>
+        this.sortOrder === 'ASC' ? sortStrategies[sortBy](a, b) : sortStrategies[sortBy](b, a)
+      );
+    } else {
+      this.displayCountryList = [...this.countryList];
+    }
+  }
   fetchCountryByName(name: string): void {
     this.subscription.push(
       this.countryService.getCountryByName(name).pipe(
         tap(() => this.isLoading = true),
         tap(res => {
-          console.log("Response : ", res);
           this.displayCountryList = res;
         }),
         tap(() => this.isLoading = false),
@@ -153,10 +172,12 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           return of([]);
         })
-      ).subscribe()
-    );
+      ).subscribe());
   }
-
+  toggleSortOrder(): void {
+    this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+    this.onChangeSortBy(this.sortBy); // Reapply sorting with new order
+  }
   ngOnDestroy(): void {
     this.subscription.forEach(sub => sub.unsubscribe());
   }

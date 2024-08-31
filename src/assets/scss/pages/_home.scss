@@ -13,6 +13,7 @@
   &.home-section {
     .landing-container {
       min-height: calc(80vh - 60px);
+      @include padding(32px 0);
     }
   }
 }
