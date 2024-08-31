@@ -24,6 +24,10 @@
         width: 100%;
         gap: 20px;
         .navbar-brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          cursor: pointer;
           .brand {
             span {
               display: flex;
@@ -32,11 +36,14 @@
               height: 35px;
               max-width: 160px;
               width: auto;
-              cursor: pointer;
             }
+          }
+          .brand-title {
+            font-family: $inter-bold;
           }
         }
         .navbar-list {
+          color: $gray-50;
           ul {
             display: flex;
             gap: 16px;
@@ -45,7 +52,7 @@
             list-style: none;
             .nav-list-item {
               cursor: pointer;
-              &.active {
+              &.active,&:hover {
                 font-family: $inter-semibold;
               }
             }
@@ -78,7 +85,8 @@
   @include themed() {
     .navbar-container {
       // background-color: t($ngt-card);
-      background-color: $gray-900-blur;
+      background-color: $gray-800;
+      color: $primary-25;
       backdrop-filter: blur(8px);
       .top-navbar {
         .sidebar-icon {

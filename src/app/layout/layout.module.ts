@@ -16,7 +16,6 @@ import { GameService } from '../_services';
 import { TestMicrophoneComponent } from './components/test-microphone/test-microphone.component';
 import { TestHeadphonesComponent } from './components/test-headphones/test-headphones.component';
 import { IconsModule } from "../icons/icons.module";
-import { WebcamModule } from 'ngx-webcam';
 import { CountryDetailsComponent } from './components/country-details/country-details.component';
 
 
@@ -38,7 +37,6 @@ import { CountryDetailsComponent } from './components/country-details/country-de
     LayoutRoutingModule,
     HttpClientModule,
     IconsModule,
-    WebcamModule
   ],
   providers: [GameService],
   exports: [

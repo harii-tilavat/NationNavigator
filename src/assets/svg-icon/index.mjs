@@ -25,6 +25,7 @@ export * from './build/ng-landing-page.icon.mjs';
 export * from './build/ng-link.icon.mjs';
 export * from './build/ng-logo-dark.icon.mjs';
 export * from './build/ng-logo-light.icon.mjs';
+export * from './build/ng-logo.icon.mjs';
 export * from './build/ng-nugget.icon.mjs';
 export * from './build/ng-product-hunt.icon.mjs';
 export * from './build/ng-right_persona.icon.mjs';

@@ -19,6 +19,7 @@ import { SidePopupComponent } from './ads/side-popup/side-popup.component';
 import { IconsModule } from "../icons/icons.module";
 import { TmdHeadingComponent } from './tmd-heading/tmd-heading.component';
 import { CountryCardComponent } from './country-card/country-card.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -36,6 +37,7 @@ import { CountryCardComponent } from './country-card/country-card.component';
     SidePopupComponent,
     TmdHeadingComponent,
     CountryCardComponent,
+    MapComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { CountryCardComponent } from './country-card/country-card.component';
     VideoAdPopupComponent,
     SidePopupComponent,
     TmdHeadingComponent,
-    CountryCardComponent
+    CountryCardComponent,
+    MapComponent
   ],
   // providers:[GameService]
 })
