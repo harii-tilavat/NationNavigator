@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "top-game": {
+    "nation-navigator": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/top-game",
+            "outputPath": "dist/nation-navigator",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -95,10 +95,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "top-game:build:production"
+              "buildTarget": "nation-navigator:build:production"
             },
             "development": {
-              "buildTarget": "top-game:build:development"
+              "buildTarget": "nation-navigator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -106,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "top-game:build"
+            "buildTarget": "nation-navigator:build"
           }
         },
         "test": {

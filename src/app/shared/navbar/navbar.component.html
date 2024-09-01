@@ -7,27 +7,30 @@
             <span><i [class]="'fa-solid ' + (!isSidebarOpen ? ' fa-x':'fa-bars')"></i></span>
           </div>
           <div class="navbar-content">
-            <div class="navbar-brand">
-              <div class="brand ms-2" (click)="goToHome()">
+            <div class="navbar-brand" (click)="goToHome()">
+              <div class="brand ms-2">
                 <span>
-                  <img src="/assets/icons/logo-dark.svg" alt="TestMyDevice">
-                   <!-- <tmd-icon name="power-off"></tmd-icon> -->
+                  <img src="/assets/images/svg/logo-light.svg" alt="Nation Navigator">
+                  <!-- <tmd-icon name="logo"></tmd-icon> -->
                 </span>
               </div>
+              <div class="brand-title">
+                <span>Nation Navigator</span>
+              </div>
             </div>
-            <div class="navbar-list">
+            <!-- <div class="navbar-list">
               <ul>
                 <li class="nav-list-item" routerLink="/webcam" routerLinkActive="active">Webcam</li>
                 <li class="nav-list-item" routerLink="/microphone" routerLinkActive="active">Microphone</li>
                 <li class="nav-list-item" routerLink="/headphones" routerLinkActive="active">Headphons</li>
                 <li class="nav-list-item" routerLink="/blog" routerLinkActive="active">Blog</li>
+                <li class="nav-list-item inter-bold"></li>
               </ul>
-            </div>
-            <div class="navbar-search d-none d-sm-block ">
+            </div> -->
+            <div class="navbar-search d-none ">
               <form action="" [formGroup]="searchForm">
                 <div class="form-group nav-search-form p-0 m-0">
-                  <input type="text" class="form-control form-control-sm" placeholder="Search" formControlName="query"
-                    (focus)="focusMode = true">
+                  <input type="text" class="form-control form-control-sm" placeholder="Search" formControlName="query">
                   <div class="search-icon">
                     <span>
                       <i class="fa-magnifying-glass fa-solid"></i>
@@ -35,7 +38,7 @@
                   </div>
                 </div>
               </form>
-              <div class="navbar-dropdown">
+              <!-- <div class="navbar-dropdown">
                 <div class="navbar-dropdown-content" *ngIf="focusMode && query">
                   <ul>
                     <ng-container *ngIf="displayGameList && displayGameList.length; else errorMessage">
@@ -58,6 +61,16 @@
                       </div>
                     </ng-template>
                   </ul>
+                </div>
+              </div> -->
+            </div>
+            <div class="navbar-theme-icon ms-auto">
+              <div class="theme-switch">
+                <div class="toggle-switch">
+                  <label class="switch-label">
+                    <input type="checkbox" class="checkbox" [(ngModel)]="isDarkMode" (ngModelChange)="toggleTheme()">
+                    <span class="slider"></span>
+                  </label>
                 </div>
               </div>
             </div>

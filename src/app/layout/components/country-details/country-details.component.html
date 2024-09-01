@@ -1,0 +1,140 @@
+<div class="layout-section country-section">
+    <div class="cd-container py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="cd-inner-container d-flex gap-5 flex-column">
+                        <div class="cd-back-box">
+                            <button class="btn btn-primary-outline" (click)="goToBack()">Back</button>
+                        </div>
+                        <div class="cd-info-container" *ngIf="!isLoading; else showLoader">
+                            <div class="row g-5" *ngIf="countryInfo">
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="cd-flag-image">
+                                        <span>
+                                            <img [src]="countryInfo.flags && (countryInfo.flags.svg || countryInfo.flags.png)" alt="">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="cd-info-box">
+                                        <div class="cd-info-header">
+                                            <div class="cd-info-title">
+                                                <h2>{{countryInfo.name.official}}</h2>
+                                            </div>
+                                        </div>
+                                        <div class="cd-info-body">
+                                            <div class="cd-info-list-box">
+                                                <div class="row">
+                                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                        <ul class="cd-info-list">
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Native Name :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.name.common}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Population :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.population}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Region :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.region}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.subregion">
+                                                                <span class="cd-info-item-key">Sub Region :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.subregion}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.subregion">
+                                                                <span class="cd-info-item-key">Capital :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.capital}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item" *ngIf="countryInfo.maps && countryInfo.maps.googleMaps">
+                                                                <span class="cd-info-item-key">Google map :</span>
+                                                                <span class="cd-info-item-value">
+                                                                    <a [href]="countryInfo.maps.googleMaps" target="_blank">View on Google Maps</a>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                        <ul class="cd-info-list">
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Area :</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.area}}</span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Languages : </span>
+                                                                <span class="cd-info-item-value d-flex gap-2">
+                                                                    <span class="badge bg-dark inter-semibold" *ngFor="let item of languages">{{item}}</span>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cd-info-footer" *ngIf="countryInfo.borders && countryInfo.borders.length">
+                                            <div class="bc-list-box">
+                                                <div class="bc-list-title">
+                                                    <span>Border Countries :</span>
+                                                </div>
+                                                <div class="bc-list">
+                                                    <div class="bc-list-item" *ngFor="let item of countryInfo.borders">
+                                                        <button class="btn btn-primary-outline">{{item}}</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #showLoader>
+                            <div class="country-loader">
+                                <div class="ph-item h-100 ph-card transperent">
+                                    <div class="ph-col-12">
+                                        <!-- <div class="ph-picture image-sm"></div> -->
+                                        <div class="row">
+                                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                <div class="ph-col-6 ph-picture image-lg"></div>
+                                            </div>
+                                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                <div class="ph-row">
+                                                    <div class="ph-col-12 big mb-4"></div>
+                                                    <ng-container *ngFor="let item of [1,2]">
+                                                        <div class="ph-col-4 "></div>
+                                                        <div class="ph-col-4 empty"></div>
+                                                        <div class="ph-col-4"></div>
+                                                    </ng-container>
+                                                    <div class="ph-col-4 "></div>
+                                                    <div class="ph-col-8 empty"></div>
+                                                    <div class="ph-col-4 "></div>
+                                                    <div class="ph-col-8 empty"></div>
+                                                    <div class="ph-col-4 "></div>
+                                                    <div class="ph-col-8 empty"></div>
+                                                    <div class="ph-col-12 mt-5"></div>
+                                                    <div class="ph-col-8 "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12" *ngIf="false">
+                    <div class="cd-map-container">
+                        <div class="row g-3" *ngIf="countryInfo">
+                            <div class="col-xxl-12 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <div class="iframe-container">
+                                    <iframe src="" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

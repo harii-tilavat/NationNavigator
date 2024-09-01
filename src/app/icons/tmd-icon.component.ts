@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, Inject, Input, Optional
 import { Subscription } from 'rxjs';
 import { IconsRegistry } from './icon-registry';
 import { DOCUMENT } from '@angular/common';
+import { BrowserService } from '../_services';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -20,7 +21,6 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
       this.element.nativeElement.removeChild(this.svgIcon);
     }
     const svgData = this.iconsRegistry.getIcon(iconName as string) || null;
-    console.log("svgData : ", svgData);
     if (svgData) {
       this.svgIcon = this.svgElementFromString(svgData);
       this.element.nativeElement.appendChild(this.svgIcon);
@@ -75,8 +75,7 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
       }
     }
   }
-  constructor(private element: ElementRef, private iconsRegistry: IconsRegistry,
-    @Optional() @Inject(DOCUMENT) private document: Document) {
+  constructor(private element: ElementRef, private iconsRegistry: IconsRegistry, @Optional() @Inject(DOCUMENT) private document: Document, private browserService: BrowserService) {
   }
 
   private svgElementFromString(svgContent: string): SVGElement {
@@ -85,7 +84,6 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
     return div.querySelector('svg') || this.document.createElementNS('http://www.w3.org/2000/svg', 'path');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("Hello");
   }
   ngOnDestroy(): void {
     this.subscription.forEach(i => i.unsubscribe());

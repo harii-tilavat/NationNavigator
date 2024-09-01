@@ -1,8 +1,79 @@
 <div class="layout-section home-section">
-  <div class="landing-header">
-    <app-tmd-heading [description]="'To start the webcam test, you do not need any programs, just click on the button below. If your camera is operational, you will see yourself on the screen.'" (startTestingEvent)="startTesting($event)" [deviceName]="'Webcam'"></app-tmd-heading>
+  <div class="landing-container">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-6 col-12">
+          <div class="search-header ">
+            <form class="form" [formGroup]="searchForm">
+              <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Enter country name..." formControlName="query">
+              <label for="search" class="search-label">
+                <span class="search-icon">
+                  <!-- <tmd-icon name="search"></tmd-icon> -->
+                </span>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 col-9">
+          <div class="search-header ">
+            <div class="search-header">
+              <select class="form-control" [(ngModel)]="sortBy" (ngModelChange)="onChangeSortBy($event)">
+                <option value="" selected>Sort by</option>
+                <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3">
+          <div class="search-header h-100">
+            <button class="btn btn-primary-outline w-100 h-100 px-1" (click)="toggleSortOrder()">
+              {{ sortOrder === 'ASC' ? 'A-Z' : 'Z-A' }}
+            </button>
+          </div>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="country-list">
+            <div class="row g-4">
+              <ng-container *ngIf="!isLoading; else showLoader">
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let item of displayCountryList">
+                  <div class="country-card-container">
+                    <app-country-card [countryInfo]="item"></app-country-card>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #showLoader>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]">
+                  <div class="country-card-container-loader">
+                    <div class="ph-item h-100 ph-card">
+                      <div class="ph-col-12">
+                        <div class="ph-picture image-sm"></div>
+                        <div class="ph-row" *ngFor="let line of [1,2,3]">
+                          <div class="ph-col-4 "></div>
+                          <div class="ph-col-2 empty"></div>
+                          <div class="ph-col-6 "></div>
+                          <!-- <div class="ph-col-12 big"></div>
+                          <div class="ph-col-12 big mt-2"></div>
+                          <div class="ph-col-12 "></div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-container *ngIf="!isLoading && !displayCountryList.length">
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="error-message text-center ">
+                    <p>No countries found matching your criteria. Please try again with different search terms.</p>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="about-container py-3">
+  <div class="about-container py-3 layout-light">
     <div class="container">
       <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -11,32 +82,17 @@
               <div class="about-card">
                 <div class="about-card-header">
                   <div class="about-card-header-title">
-                    <span class="inter-semibold font-4">About TestMyDevice</span>
+                    <span class="inter-semibold font-4">About NationNavigator</span>
                   </div>
                 </div>
                 <div class="about-card-body">
-                  <p>Welcome to <strong>TestMyDevice</strong>, your go-to solution for quick and reliable testing of
-                    headphones, microphones, and webcams. We are dedicated to helping you ensure your audio and video
-                    devices are functioning at their best.</p>
+                  <p>Users can browse a comprehensive list of countries, viewing essential details like names, populations, and areas. The application presents data in an organized and easy-to-read format, allowing users to quickly find information on any country.</p>
 
-                  <p>At <strong>TestMyDevice</strong>, we understand the importance of clear communication and
-                    high-quality sound and video. Our platform provides easy-to-use tools to test and verify your
-                    devices,
-                    giving you peace of mind.</p>
+                  <p>The sorting feature lets users arrange the list by name, population, or area. They can choose to sort in ascending or descending order, making it simple to view countries based on their preferred criteria.</p>
 
-                  <p>Our mission is to make device testing accessible to everyone, from casual users to professionals.
-                    We
-                    believe that checking your equipment should be straightforward and hassle-free.</p>
+                  <p>The application is designed to be responsive, ensuring a smooth experience across various devices. Users can interact with dropdowns and sorting buttons seamlessly on desktops, tablets, and smartphones.</p>
 
-                  <p>With <strong>TestMyDevice</strong>, you can perform comprehensive tests on your headphones,
-                    microphones, and webcams in just a few clicks. We strive to offer an intuitive user experience that
-                    saves you time and effort.</p>
-
-                  <p>We are committed to continuous improvement and innovation. By staying up-to-date with the latest
-                    technologies, we ensure that our tools meet your evolving needs.</p>
-
-                  <p>Thank you for choosing <strong>TestMyDevice</strong>. We are here to support you in achieving the
-                    best performance from your audio and video devices.</p>
+                  <p>Overall, Country Finder offers a user-friendly interface for exploring global country data, with flexible sorting options and a responsive design for easy navigation.</p>
 
                 </div>
               </div>

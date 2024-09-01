@@ -1,0 +1,36 @@
+<div class="country-card" (click)="goToCountry(countryInfo.cca3)">
+    <div class="country-card-header">
+        <div class="country-card-image">
+            <span>
+                <img [src]="countryInfo.flags && countryInfo.flags.png" [alt]="countryInfo.name.common">
+            </span>
+        </div>
+    </div>
+    <div class="country-card-body">
+        <div class="country-card-info">
+            <div class="title">
+                <h6>{{countryInfo.name.common}}</h6>
+            </div>
+            <div class="country-info-list">
+                <ul>
+                    <li class="info-item">
+                        <span class="info-item-key">Population</span>
+                        <span class="info-item-value">{{countryInfo.population | number}}</span>
+                    </li>
+                    <li class="info-item">
+                        <span class="info-item-key">Capital</span>
+                        <span class="info-item-value">{{countryInfo.capital && countryInfo.capital[0] || '--'}}</span>
+                    </li>
+                    <li class="info-item">
+                        <span class="info-item-key">Region</span>
+                        <span class="info-item-value">{{countryInfo.region}}</span>
+                    </li>
+                    <li class="info-item">
+                        <span class="info-item-key">Area</span>
+                        <span class="info-item-value">{{countryInfo.area | number}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

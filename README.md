@@ -32,7 +32,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   //   "build": "ng build",
   //   "watch": "ng build --watch --configuration development",
   //   "test": "ng test",
-  //   "build:ssr:top-game": "node dist/top-game/server/server.mjs"
+  //   "build:ssr:nation-navigator": "node dist/nation-navigator/server/server.mjs"
   // },
 
 
@@ -42,6 +42,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     // "build": "ng build",
     // "watch": "ng build --watch --configuration development",
     // "test": "ng test",
-    // "build:ssr:top-game": "node dist/top-game/server/main.server.mjs",
-    // "build:client-and-server-bundles": "ng build --c=production && ng run top-game:server:production",
+    // "build:ssr:nation-navigator": "node dist/nation-navigator/server/main.server.mjs",
+    // "build:client-and-server-bundles": "ng build --c=production && ng run nation-navigator:server:production",
     // "serve:ssr:production": "npm run build:client-and-server-bundles && npm run serve:ssr"

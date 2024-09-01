@@ -7,3 +7,4 @@ export * from './coockies/coockie.service';
 export * from './adservice/ad.service';
 export * from './browser/browser.service';
 export * from './script-loader/script-loader.service';
+export * from './country/country.service';

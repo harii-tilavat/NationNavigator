@@ -1,6 +1,7 @@
 form {
   // ensure enough room at the bottom of any form to display a one-line bmd-help
   margin-bottom: $line-height-base;
+  position: relative;
   .card & {
     margin: 0;
   }
@@ -13,6 +14,29 @@ form {
     }
     .btn {
       margin-bottom: 0;
+    }
+  }
+  .search-input {
+    height: 100%;
+    @include font-size(14px);
+    // @include padding(16px 40px);
+    padding: 17px 40px;
+  }
+  .search-label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translatey(-50%);
+    color: $gray-500;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    .search-icon {
+      height: 20px;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -61,10 +85,14 @@ form {
 .form-group .form-control {
   // border: 1px solid rgba(0, 0, 0, 0.2);
   @include font-size(14px);
-  @include padding(17px 25px);
-  background-size: 0 2px, 100% 1px;
+  @include padding(12px 25px);
+  background-size:
+    0 2px,
+    100% 1px;
   background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
+  background-position:
+    center bottom,
+    center calc(100% - 1px);
   transition: background 0s ease-out;
   float: none;
   // padding: 0.7815rem 1rem;
@@ -102,7 +130,8 @@ form {
     }
     &:focus {
       border-color: $primary-500;
-      box-shadow: 0px 0px 0px 1px $primary-100,
+      box-shadow:
+        0px 0px 0px 3px $primary-100,
         0px 1px 2px 0px transparentize($gray-900, 0.95);
     }
     // &.ng-touched {
@@ -120,14 +149,15 @@ form {
           border-color: $red-300;
           &:focus {
             border-color: $red-300;
-            box-shadow: 0px 0px 0px 2px $red-100,
+            box-shadow:
+              0px 0px 0px 2px $red-100,
               0px 1px 2px 0px transparentize($gray-900, 0.95);
           }
         }
       }
     }
     //  ng-dirty ng-invalid
-    @include placeholder();
+    @include placeholder(14px);
   }
 }
 textarea.form-control {

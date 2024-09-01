@@ -1,94 +1,184 @@
-import { AdService } from './../../../_services/adservice/ad.service';
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, Inject } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AdConfigModel, GameModel, GameModelHot } from '../../../_model';
-import { GameList, GameListCategory, GameListHot } from '../../../../assets/game';
-import { DOCUMENT } from '@angular/common';
-import { AdType } from '../../../_enum';
-import { BrowserService } from '../../../_services';
-import { Router } from '@angular/router';
+// import { AdService } from './../../../_services/adservice/ad.service';
+// import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, Inject, EventEmitter, Output } from '@angular/core';
+// import { BrowserService, CountryService } from '../../../_services';
+// import { Router } from '@angular/router';
+// import { FormGroup, FormControl } from '@angular/forms';
+// import { debounceTime, distinctUntilChanged, Subscription, tap } from 'rxjs';
+// import { CountryModel } from '../../../_model';
 
+
+// @Component({
+//   selector: 'app-home',
+//   templateUrl: './home.component.html',
+//   styleUrl: './home.component.scss'
+// })
+// export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+//   public searchForm: FormGroup = new FormGroup({ query: new FormControl('', []) });
+//   public timerInterval!: ReturnType<typeof setInterval>;
+//   public subscription: Array<Subscription> = [];
+//   public isLoading = true;
+//   public countryList: Array<CountryModel> = [];
+//   public displayCountryList: Array<CountryModel> = [];
+//   constructor(public adService: AdService, private browserService: BrowserService, private router: Router, private countryService: CountryService) { }
+
+//   ngOnInit(): void {
+//     if (!this.browserService.isBrowser()) return;
+//     this.subscription.push(this.searchForm.controls['query'].valueChanges.pipe(tap(() => this.isLoading = true), debounceTime(800), distinctUntilChanged())
+//       .subscribe(query => {
+//         if (!query) {
+//           this.displayCountryList = [...this.countryList];
+//           this.isLoading = false;
+//           return;
+//         }
+//         this.fetchCountryByName(query);
+//         console.log("QUERY ", query);
+//       }));
+//     this.fetchAllCountryList();
+//   }
+//   ngAfterViewInit(): void { }
+
+//   fetchAllCountryList(): void {
+//     this.subscription.push(
+//       this.countryService.getAllCountry().subscribe({
+//         next: (res: Array<CountryModel>) => {
+//           console.log("Response : ", res);
+//           this.countryList = res;
+//           this.displayCountryList = [...this.countryList];
+//           this.isLoading = false;
+//         }, error: () => {
+//           console.log("Error in fetching country.");
+//           this.isLoading = false;
+//         }
+//       })
+//     );
+//   }
+//   fetchCountryByName(name: string): void {
+//     this.subscription.push(
+//       this.countryService.getCountryByName(name).subscribe({
+//         next: (res: Array<CountryModel>) => {
+//           console.log("Response : ", res);
+//           this.displayCountryList = res;
+//           this.isLoading = false;
+//         }, error: () => {
+//           console.log("Error in fetching country.");
+//           this.isLoading = false;
+//         }
+//       })
+//     );
+//   }
+//   ngOnDestroy(): void {
+//     this.subscription.forEach(i => i.unsubscribe);
+//   }
+// }
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Subscription, of } from 'rxjs';
+import { tap, catchError, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { AdService } from '../../../_services/adservice/ad.service';
+import { BrowserService, CountryService } from '../../../_services';
+import { Router } from '@angular/router';
+import { CountryModel } from '../../../_model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit, OnDestroy {
-  public gameListMain = GameListCategory;
-  public testGame: any[] = [];
-  public gameListTrending: Array<GameModel> = [];
-  public gameListLatest: Array<GameModel> = [];
-  public gameListFeatured: Array<GameModel> = [];
-  public gameListKids: Array<GameModel> = [];
-  public gameListHot = GameListHot;
-  public subscription: Subscription[] = [];
-  public devices = ['Webcam', 'Microphone', 'Headphones'];
-  public device!: string;
-  public currentIndex = 0;
-  public intervalId: any;
-  // public adConfig: AdConfigModel = {
-  //   dataAdClient: 'ca-pub-2475964352287676',
-  //   dataAdSlot: '7255209184',
-  //   dataAdFormat: 'auto',
-  //   dataFullWidthResponsive: true
-  // };
-
-  public timerInterval!: ReturnType<typeof setInterval>;
-
-  constructor(public adService: AdService, private browserService: BrowserService, private router: Router) { }
+export class HomeComponent implements OnInit, OnDestroy {
+  public searchForm: FormGroup = new FormGroup({
+    query: new FormControl('')
+  });
+  public subscription: Array<Subscription> = [];
+  public isLoading = true;
+  public sortBy: string = "";
+  public sortOptions = [
+    { value: 'NAME', label: 'Name' },
+    { value: 'POPULATION', label: 'Population' },
+    { value: 'AREA', label: 'Area' },
+  ];
+  public countryList: Array<CountryModel> = [];
+  public displayCountryList: Array<CountryModel> = [];
+  public sortOrder: 'ASC' | 'DESC' = 'ASC';
+  constructor(public adService: AdService, private browserService: BrowserService, private router: Router, private countryService: CountryService) { }
 
   ngOnInit(): void {
-    this.gameListTrending = this.gameListMain.sort((a, b) => a.sortOrder - b.sortOrder).slice(0, 12);
-    this.gameListFeatured = this.gameListMain.sort((a, b) => a.sortOrder - b.sortOrder).slice(12, 24);
-    this.gameListLatest = this.gameListMain.sort((a, b) => a.sortOrder - b.sortOrder).slice(24, 36);
-    this.gameListHot = this.gameListHot.slice(0, 12);
-    this.gameListKids = this.gameListMain.sort((a, b) => a.sortOrder - b.sortOrder).filter(i => i.categoryId === '11').slice(24, 36);
-    this.device = this.devices[this.currentIndex];
-    if (this.browserService.isBrowser()) {
-      this.intervalId = setInterval(() => {
-        this.currentIndex++;
-        this.device = this.devices[this.currentIndex % this.devices.length];
-      }, 2000);
+    if (!this.browserService.isBrowser()) return;
+    this.subscription.push(this.searchForm.controls['query'].valueChanges.pipe(
+      tap(() => this.isLoading = true),
+      debounceTime(500),
+      distinctUntilChanged(),
+      tap(query => {
+        if (!query) {
+          this.displayCountryList = [...this.countryList];
+          this.isLoading = false;
+          return;
+        }
+        this.fetchCountryByName(query);
+      }),
+      catchError(error => {
+        console.log("Error in search query:", error);
+        this.isLoading = false;
+        return of([]);
+      })
+    ).subscribe());
+
+    this.fetchAllCountryList();
+  }
+
+  fetchAllCountryList(): void {
+    this.subscription.push(
+      this.countryService.getAllCountry().pipe(
+        tap(() => this.isLoading = true),
+        tap(res => {
+          // console.log("Response : ", res);
+          this.countryList = res;
+          this.displayCountryList = [...this.countryList];
+        }),
+        tap(() => this.isLoading = false),
+        catchError(error => {
+          console.log("Error in fetching country.", error);
+          this.isLoading = false;
+          return of([]);
+        })
+      ).subscribe()
+    );
+  }
+  onChangeSortBy(sortBy: string): void {
+    const sortStrategies: { [key: string]: (a: any, b: any) => number } = {
+      NAME: (a, b) => (a?.name?.common || '').localeCompare(b?.name?.common || ''),
+      POPULATION: (a, b) => (a?.population || 0) - (b?.population || 0),
+      AREA: (a, b) => (a?.area || 0) - (b?.area || 0),
+    };
+
+    if (sortStrategies[sortBy]) {
+      this.displayCountryList.sort((a, b) =>
+        this.sortOrder === 'ASC' ? sortStrategies[sortBy](a, b) : sortStrategies[sortBy](b, a)
+      );
+    } else {
+      this.displayCountryList = [...this.countryList];
     }
   }
-  ngAfterViewInit(): void {
-    this.loadAdCodes();
+  fetchCountryByName(name: string): void {
+    this.subscription.push(
+      this.countryService.getCountryByName(name).pipe(
+        tap(() => this.isLoading = true),
+        tap(res => {
+          this.displayCountryList = res;
+        }),
+        tap(() => this.isLoading = false),
+        catchError(error => {
+          console.log("Error in fetching country by name.", error);
+          this.isLoading = false;
+          return of([]);
+        })
+      ).subscribe());
   }
-
-  loadAdCodes(): void {
-
-    try {
-      Promise.all(
-        [
-          this.adService.registerAds('/23183718078/bannerads_970x250_320x100', [[970, 250], [320, 100]], 'div-gpt-ad-1719924585166-0', AdType.BANNER_BIG), // Google
-          this.adService.registerAds('/23183718078/Hop_Bannersmart', [[750, 100], [300, 100], [320, 100]], 'div-gpt-ad-1719902603272-0', AdType.BANNER_BIG), // Google
-          this.adService.registerAds('/23183718078/hop_hom_banner_1', [[320, 100], [970, 250]], 'div-gpt-ad-1720012442388-0', AdType.BANNER_BIG), // Google
-
-          // this.adService.registerAds('/21857590943,23113948477/pss_hopgame.in/728x90', [[750, 100], [300, 100], [320, 100]], 'div-gpt-ad-1719902603272-0'), // Profit-sense
-          // this.adService.registerAds('/21857590943,23113948477/pss_hopgame.in/970x250', [[970, 250], [320, 100]], 'div-gpt-ad-1719924585166-0'), // Profit-sense
-          // this.adService.registerAds('/21857590943,23113948477/pss_hopgame.in/300x600', [[320, 100], [970, 250]], 'div-gpt-ad-1720012442388-0'), // Profit-sense
-
-        ]).then(() => { }).catch(() => { });
-
-    } catch (error) {
-      // console.log("Load code error ", error);
-    }
-  }
-  startTesting(event:Event): void {
-    this.router.navigate(['/webcam']);
+  toggleSortOrder(): void {
+    this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+    this.onChangeSortBy(this.sortBy); // Reapply sorting with new order
   }
   ngOnDestroy(): void {
-    this.adService.destroyAdSense('div-gpt-ad-1719902603272-0');
-    this.adService.destroyAdSense('div-gpt-ad-1719924585166-0');
-    this.adService.destroyAdSense('div-gpt-ad-1720012442388-0');
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-    if (this.subscription) {
-      this.subscription.forEach(item => item.unsubscribe());
-    }
+    this.subscription.forEach(sub => sub.unsubscribe());
   }
-
 }
-

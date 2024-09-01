@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './layout.component';
-import { TestWebcamComponent } from './components/test-webcam/test-webcam.component';
 import { TestHeadphonesComponent } from './components/test-headphones/test-headphones.component';
 import { TestMicrophoneComponent } from './components/test-microphone/test-microphone.component';
+import { CountryDetailsComponent } from './components/country-details/country-details.component';
 
 
 // const routes: Routes = [
@@ -27,10 +27,8 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      { path: '', component: HomeComponent, data: { title: 'HopGame Home' } },
-      { path: 'webcam', component: TestWebcamComponent, data: { title: 'Test Webcam ' } },
-      { path: 'headphones', component: TestHeadphonesComponent, data: { title: 'Test Headphones ' } },
-      { path: 'microphone', component: TestMicrophoneComponent, data: { title: 'Test Microphone ' } },
+      { path: '', component: HomeComponent, data: { title: 'Country finder - Nation Navigator' } },
+      { path: 'country/:code', component: CountryDetailsComponent, data: { title: 'Country finder - Country details' } },
       { path: '**', redirectTo: '', pathMatch: 'full', data: { title: 'HopGame Home' } }
     ]
   },
