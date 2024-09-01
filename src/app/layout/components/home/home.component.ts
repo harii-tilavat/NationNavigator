@@ -175,8 +175,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       ).subscribe());
   }
   toggleSortOrder(): void {
-    this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
-    this.onChangeSortBy(this.sortBy); // Reapply sorting with new order
+    if (this.sortBy) {
+      this.sortOrder = this.sortOrder === 'ASC' ? 'DESC' : 'ASC';
+      this.onChangeSortBy(this.sortBy); // Reapply sorting with new order
+    }
   }
   ngOnDestroy(): void {
     this.subscription.forEach(sub => sub.unsubscribe());

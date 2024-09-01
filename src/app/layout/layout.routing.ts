@@ -27,8 +27,8 @@ const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      { path: '', component: HomeComponent, data: { title: 'Country finder - Nation Navigator' } },
-      { path: 'country/:code', component: CountryDetailsComponent, data: { title: 'Country finder - Country details' } },
+      { path: '', component: HomeComponent, data: { title: 'Country Finder - Nation Navigator' } },
+      { path: 'country/:code', component: CountryDetailsComponent, data: { title: 'Country Finder - Country details' } },
       { path: '**', redirectTo: '', pathMatch: 'full', data: { title: 'HopGame Home' } }
     ]
   },

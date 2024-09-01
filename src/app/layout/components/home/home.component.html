@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-6 col-12">
-          <div class="search-header ">
+          <div class="search-header-input ">
             <form class="form" [formGroup]="searchForm">
               <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Enter country name..." formControlName="query">
               <label for="search" class="search-label">
@@ -15,17 +15,15 @@
           </div>
         </div>
         <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 col-9">
-          <div class="search-header ">
-            <div class="search-header">
-              <select class="form-control" [(ngModel)]="sortBy" (ngModelChange)="onChangeSortBy($event)">
-                <option value="" selected>Sort by</option>
-                <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
-              </select>
-            </div>
+          <div class="input-select">
+            <select class="form-control" [(ngModel)]="sortBy" (ngModelChange)="onChangeSortBy($event)">
+              <option value="" selected>Sort by</option>
+              <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+            </select>
           </div>
         </div>
         <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3">
-          <div class="search-header h-100">
+          <div class="sort-button h-100">
             <button class="btn btn-primary-outline w-100 h-100 px-1" (click)="toggleSortOrder()">
               {{ sortOrder === 'ASC' ? 'A-Z' : 'Z-A' }}
             </button>

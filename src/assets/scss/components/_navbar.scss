@@ -10,7 +10,6 @@
       display: flex;
       align-items: center;
       gap: 14px;
-
       .sidebar-icon {
         transition: all 0.2s;
         margin-left: 12px;
@@ -34,8 +33,9 @@
               justify-content: center;
               align-items: center;
               height: 35px;
-              max-width: 160px;
+              max-width: 190px;
               width: auto;
+              user-select: none;
             }
           }
           .brand-title {
@@ -85,7 +85,7 @@
   @include themed() {
     .navbar-container {
       // background-color: t($ngt-card);
-      background-color: $gray-800;
+      background-color: t($bg-nav);
       color: $primary-25;
       backdrop-filter: blur(8px);
       .top-navbar {
