@@ -1,6 +1,6 @@
 .about-section {
   .about-container {
-    @include margin-top(32px);
+    @include margin(32px 0);
     .about-card {
       .about-card-header {
         @include padding-bottom(24px);
