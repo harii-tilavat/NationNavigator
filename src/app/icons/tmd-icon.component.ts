@@ -17,6 +17,7 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
   // fill: string | undefined;
   @Input()
   set name(iconName: string | null) {
+    if (!this.browserService.isBrowser()) return;
     if (this.svgIcon) {
       this.element.nativeElement.removeChild(this.svgIcon);
     }
