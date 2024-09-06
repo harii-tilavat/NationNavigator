@@ -48,11 +48,11 @@
                         <div class="contact-links">
                           <ul>
                             <li *ngFor="let item of contactLinks">
-                              <a [href]="item.enum ==='EMAIL'?'mailto: ' + item.link: item.link" target="_blank"
-                                 class="text-inherit">
+                              <a [href]="item.enum ==='EMAIL'?'mailto: ' + item.link: item.link" target="_blank" class="text-inherit">
                                 <div class="contact-link link-email">
                                   <span>
-                                    <i [class]="item.icon"></i>
+                                    <!-- <i [class]="item.icon"></i> -->
+                                    <tmd-icon [name]="item.icon" [fill]="'#FFF'" [stroke]="'#FFF'"></tmd-icon>
                                   </span>
                                 </div>
                               </a>

@@ -42,4 +42,7 @@ export * from './build/ng-transparent_recruitment.icon';
 export * from './build/ng-x-close.icon';
 export * from './build/ng-power-off.icon';
 export * from './build/ng-rocket.icon';
+export * from './build/ng-email.icon';
+export * from './build/ng-github.icon';
+export * from './build/ng-linkedin.icon';
 export * from './build/my-icons.model';

@@ -17,24 +17,24 @@ export class FooterComponent implements OnInit, OnDestroy {
   public contactLinks: Array<any> = [
     {
       id: 1,
-      title: 'email',
+      title: 'Email',
       link: this.emailLink,
-      icon: 'fa-solid fa-envelope',
+      icon: 'email',
       enum: 'EMAIL'
     },
     {
       id: 2,
-      title: 'Facebook',
+      title: 'Linkedin',
       link: 'https://www.facebook.com/profile.php?id=61560286072988',
-      icon: 'fa-brands fa-facebook-f',
-      enum: 'FACEBOOK'
+      icon: 'linkedin',
+      enum: 'LINKEDIN'
     },
     {
       id: 3,
-      title: 'instagram',
+      title: 'Github',
       link: 'https://www.instagram.com/hopgamehelp/',
-      icon: 'fa-brands fa-instagram',
-      enum: 'INSTAGRAM'
+      icon: 'github',
+      enum: 'Github'
     },
   ]
   constructor(private router: Router, private sidebarService: SidebarService, private themeService: ThemeService) { }

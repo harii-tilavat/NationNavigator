@@ -41,4 +41,7 @@ export * from './build/ng-transparent_recruitment.icon.mjs';
 export * from './build/ng-x-close.icon.mjs';
 export * from './build/ng-power-off.icon.mjs';
 export * from './build/ng-rocket.icon.mjs';
+export * from './build/ng-email.icon.mjs';
+export * from './build/ng-github.icon.mjs';
+export * from './build/ng-linkedin.icon.mjs';
 export * from './build/my-icons.model.mjs';
