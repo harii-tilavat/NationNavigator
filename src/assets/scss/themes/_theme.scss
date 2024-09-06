@@ -1,6 +1,8 @@
 $bg-color: "bg-color";
-$text-color: "text-color";
 $bg-color-light: "bg-color-light";
+$bg-nav: "bg-nav";
+
+$text-color: "text-color";
 // $dark-black: "dark-black";
 // $dark-black: "dark-black";
 // input prop
@@ -30,6 +32,7 @@ $themes: (
   light: (
     bg-color: $primary-50,
     bg-color-light: $gray-100,
+    bg-nav: $primary-25,
     text-color: $gray-900,
     ngt-card: $primary-25,
     ngt-card-line: $gray-100,
@@ -46,6 +49,7 @@ $themes: (
   dark: (
     bg-color: $gray-900,
     bg-color-light: $gray-800,
+    bg-nav: $gray-800,
     text-color: $primary-25,
     ngt-card: $gray-700,
     ngt-card-line: $gray-800,

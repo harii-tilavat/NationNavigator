@@ -100,14 +100,13 @@
     }
   }
   .copy-right-section {
-    border-radius: 0 0 12px 12px;
   }
   @include themed() {
+    background-color: t($bg-nav);
     .footer-top-section {
-      background-color: t($bg-color-light);
       .footer-inner-container {
         .footer-top-icon {
-          background-color: t($bg-color-light);
+          background-color: t($bg-nav);
         }
         .footer-header {
           .footer-header-content {
@@ -149,7 +148,6 @@
       }
     }
     .copy-right-section {
-      background-color: t($bg-color-light);
       border-top: 1px solid t($switch-border);
     }
   }

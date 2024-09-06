@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-6 col-12">
-          <div class="search-header ">
+          <div class="search-header-input ">
             <form class="form" [formGroup]="searchForm">
               <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Enter country name..." formControlName="query">
               <label for="search" class="search-label">
@@ -15,17 +15,15 @@
           </div>
         </div>
         <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 col-9">
-          <div class="search-header ">
-            <div class="search-header">
-              <select class="form-control" [(ngModel)]="sortBy" (ngModelChange)="onChangeSortBy($event)">
-                <option value="" selected>Sort by</option>
-                <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
-              </select>
-            </div>
+          <div class="input-select">
+            <select class="form-control" [(ngModel)]="sortBy" (ngModelChange)="onChangeSortBy($event)">
+              <option value="" selected>Sort by</option>
+              <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+            </select>
           </div>
         </div>
         <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3">
-          <div class="search-header h-100">
+          <div class="sort-button h-100">
             <button class="btn btn-primary-outline w-100 h-100 px-1" (click)="toggleSortOrder()">
               {{ sortOrder === 'ASC' ? 'A-Z' : 'Z-A' }}
             </button>
@@ -82,17 +80,23 @@
               <div class="about-card">
                 <div class="about-card-header">
                   <div class="about-card-header-title">
-                    <span class="inter-semibold font-4">About NationNavigator</span>
+                    <span class="inter-semibold font-4">Your Guide to World Countries</span>
                   </div>
                 </div>
                 <div class="about-card-body">
-                  <p>Users can browse a comprehensive list of countries, viewing essential details like names, populations, and areas. The application presents data in an organized and easy-to-read format, allowing users to quickly find information on any country.</p>
+                  <!-- <p>Users can browse a comprehensive list of countries, viewing essential details like names, populations, and areas. The application presents data in an organized and easy-to-read format, allowing users to quickly find information on any country.</p>
 
                   <p>The sorting feature lets users arrange the list by name, population, or area. They can choose to sort in ascending or descending order, making it simple to view countries based on their preferred criteria.</p>
 
                   <p>The application is designed to be responsive, ensuring a smooth experience across various devices. Users can interact with dropdowns and sorting buttons seamlessly on desktops, tablets, and smartphones.</p>
 
-                  <p>Overall, Country Finder offers a user-friendly interface for exploring global country data, with flexible sorting options and a responsive design for easy navigation.</p>
+                  <p>Overall, Country Finder offers a user-friendly interface for exploring global country data, with flexible sorting options and a responsive design for easy navigation.</p> -->
+                  <!-- <h3>Your Guide to World Countries</h3> -->
+                  <p>1. <strong>Search for Any Country:</strong> Type the name of any country to quickly get detailed information.</p>
+                  <p>2. <strong>Sort by Criteria:</strong> Organize the country list by name, population, or area with just a click.</p>
+                  <p>3. <strong>Customizable Order:</strong> Choose to view the countries in ascending or descending order.</p>
+                  <p>4. <strong>Explore on the Map:</strong> View the location of each country on an interactive map.</p>
+                  <p>5. <strong>User-Friendly Interface:</strong> Enjoy an easy and intuitive search experience to find any country.</p>
 
                 </div>
               </div>

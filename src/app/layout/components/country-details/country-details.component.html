@@ -34,7 +34,7 @@
                                                             </li>
                                                             <li class="cd-info-item">
                                                                 <span class="cd-info-item-key">Population :</span>
-                                                                <span class="cd-info-item-value">{{countryInfo.population}}</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.population | number}}</span>
                                                             </li>
                                                             <li class="cd-info-item">
                                                                 <span class="cd-info-item-key">Region :</span>
@@ -60,12 +60,18 @@
                                                         <ul class="cd-info-list">
                                                             <li class="cd-info-item">
                                                                 <span class="cd-info-item-key">Area :</span>
-                                                                <span class="cd-info-item-value">{{countryInfo.area}}</span>
+                                                                <span class="cd-info-item-value">{{countryInfo.area | number}} km²</span>
                                                             </li>
                                                             <li class="cd-info-item">
                                                                 <span class="cd-info-item-key">Languages : </span>
-                                                                <span class="cd-info-item-value d-flex gap-2">
+                                                                <span class="cd-info-item-value d-flex gap-2 flex-wrap">
                                                                     <span class="badge bg-dark inter-semibold" *ngFor="let item of languages">{{item}}</span>
+                                                                </span>
+                                                            </li>
+                                                            <li class="cd-info-item">
+                                                                <span class="cd-info-item-key">Currencies : </span>
+                                                                <span class="cd-info-item-value d-flex gap-2 flex-wrap">
+                                                                    <span class=" inter-semibold" *ngFor="let item of currencies">{{item}}</span>
                                                                 </span>
                                                             </li>
                                                         </ul>

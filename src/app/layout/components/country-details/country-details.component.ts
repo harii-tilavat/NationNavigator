@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CountryModel } from '../../../_model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserService, CountryService, TitleService } from '../../../_services';
 
 @Component({
@@ -14,7 +14,8 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   public countryInfo!: CountryModel;
   public isLoading = false;
   public languages: Array<string> = [];
-  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService, private browserService: BrowserService, private titleService: TitleService) { }
+  public currencies: string[] = []
+  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService, private browserService: BrowserService, private titleService: TitleService, private router: Router) { }
 
   ngOnInit(): void {
     if (!this.browserService.isBrowser()) return;
@@ -33,7 +34,9 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
         next: (res: Array<CountryModel>) => {
           if (res && res.length) {
             this.countryInfo = res[0];
-            this.setTitle(this.countryInfo.name.common)
+            console.log("COUNTRY : ", this.countryInfo);
+            this.setTitle(this.countryInfo.name.common);
+            this.extractCurrencies(this.countryInfo.currencies);
             this.isLoading = false;
             if (this.countryInfo.languages) {
               for (let item in this.countryInfo.languages) {
@@ -48,11 +51,19 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
       })
     );
   }
+  extractCurrencies(currencies: any): void { // { [key: string]: any }
+    for (const code in currencies) {
+      if (currencies.hasOwnProperty(code)) {
+        this.currencies.push(`${currencies[code].name} (${code}) - ${currencies[code].symbol}`);
+      }
+    }
+  }
+
   goToBack(): void {
-    history && history.back();
+    this.router.navigate(['/']);
   }
   setTitle(title?: string) {
-    this.titleService.setTitle('Country finder - ' + (title || ''));
+    this.titleService.setTitle('Country Finder - ' + (title || ''));
   }
   ngOnDestroy(): void {
     this.subscription.forEach(i => i.unsubscribe());
