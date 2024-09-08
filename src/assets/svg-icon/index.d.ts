@@ -1,6 +1,7 @@
 import type { TmdIcon } from './build/my-icons.model';
 export type TmdIconNameSubset<T extends Readonly<TmdIcon[]>> = T[number]['name'];
 export * from './build/ng-affordable_feedback.icon';
+export * from './build/ng-arrow-up.icon';
 export * from './build/ng-blog.icon';
 export * from './build/ng-build_with_input.icon';
 export * from './build/ng-check-true.icon';

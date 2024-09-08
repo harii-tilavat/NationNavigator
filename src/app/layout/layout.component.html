@@ -1,16 +1,14 @@
-<!-- HopGame_Interstitial -->
-<!-- <div id="ps_ad_rotation_id_6916"></div> -->
 <div class="layout-container">
   <div class="navbar-section">
     <app-navbar></app-navbar>
   </div>
-  <div class="layout-inner-container" [ngClass]="{'sidebar-close': !isSidebarOpen }">
-    <!-- <div class="sidebar-section">
-      <app-sidebar></app-sidebar>
-    </div> -->
+  <div class="layout-inner-container">
     <div class="main-section">
       <div class="main-section-routing">
         <router-outlet></router-outlet>
+      </div>
+      <div class="about-container py-3 layout-light">
+        <app-about></app-about>
       </div>
       <div class="footer-section">
         <app-footer></app-footer>
@@ -18,7 +16,9 @@
     </div>
   </div>
 </div>
-<!-- Video ad  -->
-<!-- hopgame.in_Sticky Video ad ( Modal will be open in below element )-->
-<div id="video-ad"></div>
-<div id="side-popup"></div>
+
+<div class="scroll-top-icon" (click)="scrollTop()" [ngClass]="{'show':isShowScrollToTop}">
+  <span>
+    <tmd-icon [name]="'arrow-up'"></tmd-icon>
+  </span>
+</div>

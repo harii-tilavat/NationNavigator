@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { GameType } from '../../_enum';
 import { AdConfigModel, GameModel, GameModelHot } from '../../_model';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.prod';
 import { AdService, GameService } from '../../_services';
 import { NgbModal } from '../ng-modal';
 import { FooterComponent } from '../footer/footer.component';
@@ -23,7 +22,6 @@ export class GridGameComponent implements OnInit, OnDestroy, OnChanges, AfterVie
   @Input() isAdShow = true;
   public subscription: Subscription[] = [];
   public adsAfterGame: number = 12;
-  public gamePath: string = environment.gamePath;
   public isMonetizedGame!: string;
   public displayGameList: Array<GameModel | GameModelHot> = [];
   public adNumber1 = 3;

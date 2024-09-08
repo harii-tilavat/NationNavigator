@@ -3,12 +3,13 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { CountryModel } from '../../_model';
 import { BaseProviderService } from '../base-provider.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService extends BaseProviderService {
-  private fetchUrl = 'https://restcountries.com/v3.1';
+  private fetchUrl = environment.apiUrl;
   constructor(http: HttpClient) {
     super(http);
   }

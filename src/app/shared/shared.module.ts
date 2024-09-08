@@ -20,6 +20,7 @@ import { IconsModule } from "../icons/icons.module";
 import { TmdHeadingComponent } from './tmd-heading/tmd-heading.component';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { MapComponent } from './map/map.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -38,6 +39,7 @@ import { MapComponent } from './map/map.component';
     TmdHeadingComponent,
     CountryCardComponent,
     MapComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +63,8 @@ import { MapComponent } from './map/map.component';
     SidePopupComponent,
     TmdHeadingComponent,
     CountryCardComponent,
-    MapComponent
+    MapComponent,
+    AboutComponent
   ],
   // providers:[GameService]
 })

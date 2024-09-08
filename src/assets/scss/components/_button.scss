@@ -16,6 +16,10 @@
     @include font-size(16px);
     letter-spacing: 0.32px;
   }
+  &.btn-sm {
+    padding: 8px 12px;
+    @include font-size(12px);
+  }
   &.btn-transparent {
     @include button-size(
       0.8125rem,

@@ -14,6 +14,7 @@ import { BrowserService } from '../_services';
 export class TmdIconComponent implements OnDestroy, OnChanges {
   public subscription: Array<Subscription> = [];
   private svgIcon: SVGElement | undefined;
+  @Input() isDefault = true;
   // fill: string | undefined;
   @Input()
   set name(iconName: string | null) {
@@ -25,6 +26,14 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
     if (svgData) {
       this.svgIcon = this.svgElementFromString(svgData);
       this.element.nativeElement.appendChild(this.svgIcon);
+
+      if (!this.isDefault) return;
+      console.log("NAME : ", iconName, this.isDefault);
+      const paths = this.svgIcon.getElementsByTagName('path') as HTMLCollection;
+      for (let i = 0; i < paths.length; i++) {
+        (paths[i] as HTMLElement).style.fill = 'currentColor';
+      }
+
     }
   }
   @Input()

@@ -15,15 +15,17 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   public isSidebarOpen = false;
   public sidePopupTimer = 15; // After this seconds popup will reappear.
   public timeout: any;
+  public isShowScrollToTop = false;
   constructor(private sidebarService: SidebarService, private deviceTypeService: DeviceTypeService, private browserService: BrowserService, public adService: AdService, private modalService: NgbModal) {
   }
-
   ngOnInit(): void {
+    if (!this.browserService.isBrowser()) return;
     this.subscription.push(this.sidebarService.isSidebarOpen.subscribe({
       next: (res: boolean) => {
         this.isSidebarOpen = res;
       }
-    }))
+    }));
+
   }
 
   ngAfterViewInit(): void {
@@ -64,11 +66,6 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       return false
     }
   }
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.sidebarToggle();
-    // You can perform actions based on the resize event;
-  }
   sidebarToggle() {
     if (this.deviceTypeService.isDesktop()) {
       this.sidebarService.sidebarOpen();
@@ -76,6 +73,27 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.sidebarService.sidebarClose();
       return;
+    }
+  }
+  scrollTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.sidebarToggle();
+    // You can perform actions based on the resize event;
+  }
+  @HostListener('window:scroll')
+  checkScroll() {
+    // Get current scroll position
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition >= 800) {
+      // Show the button when scroll position is greater than 800px
+      this.isShowScrollToTop = true;
+    } else {
+      // Hide the button if the scroll position is less than 800px
+      this.isShowScrollToTop = false;
     }
   }
   ngOnDestroy(): void {

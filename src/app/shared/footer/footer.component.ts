@@ -16,23 +16,16 @@ export class FooterComponent implements OnInit, OnDestroy {
   public logoUrl = '/assets/images/svg/nn-logo-dark.svg';
   public contactLinks: Array<any> = [
     {
-      id: 1,
-      title: 'Email',
-      link: this.emailLink,
-      icon: 'email',
-      enum: 'EMAIL'
-    },
-    {
       id: 2,
       title: 'Linkedin',
-      link: 'https://www.facebook.com/profile.php?id=61560286072988',
+      link: 'https://www.linkedin.com/in/harit-tilavat-8a6888214/',
       icon: 'linkedin',
       enum: 'LINKEDIN'
     },
     {
       id: 3,
-      title: 'Github',
-      link: 'https://www.instagram.com/hopgamehelp/',
+      title: 'Github link',
+      link: 'https://github.com/harii-tilavat/NationNavigator',
       icon: 'github',
       enum: 'Github'
     },
