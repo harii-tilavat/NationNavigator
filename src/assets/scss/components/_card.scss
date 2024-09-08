@@ -1,0 +1,136 @@
+.country-card {
+  transition: all 0.2s;
+  overflow: hidden;
+  height: calc(100%);
+  cursor: pointer;
+  border-radius: 8px;
+  @include box-shadow-navbar();
+  &:hover {
+    transform: translateY(-10px);
+  }
+  .country-card-header {
+    padding: 0;
+    border: none;
+    .country-card-image {
+      padding-top: 56.25%;
+      position: relative;
+      height: 100%;
+      transition: all 0.2s;
+      span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .country-card-body {
+    @include padding(15px);
+    .country-card-info {
+      .title {
+        margin-bottom: 16px;
+        @include line-clamp(1);
+        h6 {
+          font-size: 20px;
+          margin: 0;
+          font-family: $inter-bold;
+        }
+      }
+      .country-info-list {
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-flow: column;
+          gap: 8px;
+          .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @include font-size(14px);
+            font-family: $inter-semibold;
+            .info-item-key {
+            }
+            .info-item-value {
+              font-size: 0.85em;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include themed() {
+    background-color: t($ngt-card);
+    .country-card-header {
+      .country-card-image {
+        span {
+          img {
+          }
+        }
+      }
+    }
+
+    .country-card-body {
+      .country-card-info {
+        .title {
+          h6 {
+          }
+        }
+
+        .country-info-list {
+          ul {
+            .info-item {
+              .info-item-key {
+              }
+
+              &:last-child {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down("sm") {
+  .country-card {
+    .country-card-header {
+      .country-card-image {
+        span {
+          img {
+          }
+        }
+      }
+    }
+
+    .country-card-body {
+      .country-card-info {
+        .title {
+          h6 {
+          }
+        }
+
+        .country-info-list {
+          ul {
+            .info-item {
+              .info-item-key {
+              }
+
+              &:last-child {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

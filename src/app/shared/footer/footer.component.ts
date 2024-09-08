@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { SidebarService, ThemeService } from '../../_services';
+import { ThemeService } from '../../_services';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -30,7 +30,7 @@ export class FooterComponent implements OnInit, OnDestroy {
       enum: 'Github'
     },
   ]
-  constructor(private router: Router, private sidebarService: SidebarService, private themeService: ThemeService) { }
+  constructor(private router: Router, private themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.subscription.push(
@@ -42,7 +42,6 @@ export class FooterComponent implements OnInit, OnDestroy {
   }
   goToPage(route: Array<string>): void {
     this.router.navigate(route);
-    this.sidebarService.activateMenu(-1);
   }
   scrollTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });

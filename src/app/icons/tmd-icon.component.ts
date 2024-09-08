@@ -28,7 +28,6 @@ export class TmdIconComponent implements OnDestroy, OnChanges {
       this.element.nativeElement.appendChild(this.svgIcon);
 
       if (!this.isDefault) return;
-      console.log("NAME : ", iconName, this.isDefault);
       const paths = this.svgIcon.getElementsByTagName('path') as HTMLCollection;
       for (let i = 0; i < paths.length; i++) {
         (paths[i] as HTMLElement).style.fill = 'currentColor';

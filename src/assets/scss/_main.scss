@@ -25,24 +25,16 @@
   animation-iteration-count: infinite; /* Repeat the animation indefinitely */
   opacity: 0;
   transition: 0.2s;
+  cursor: default;
+  &.show {
+    opacity: 1;
+    cursor: pointer;
+  }
   span {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 12px;
   }
-  &.show {
-    opacity: 1;
-  }
 }
-@keyframes slowUpAnimation {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+
