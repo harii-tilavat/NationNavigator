@@ -1,6 +1,6 @@
 {
-  "short_name": "TestMyDevice",
-  "name": "TestMyDevice",
+  "short_name": "NationNavigator",
+  "name": "NationNavigator",
   "icons": [
     {
       "src": "/assets/icons/favicon.svg",
