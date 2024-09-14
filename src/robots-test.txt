@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Disallow: /register/
-Disallow: /settings/
-Allow: /
-
-Sitemap: https://hopgame.in/sitemap.xml

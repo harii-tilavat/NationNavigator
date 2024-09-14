@@ -33,7 +33,12 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     })).subscribe((res) => {
       this.titleService.setTitle(res);
     }));
-    // this.titleService.getMeta();
+
+    // Meta data for SEO
+    this.titleService.setMeta({
+      description: "Explore detailed information about countries, including population, area, and dynamic maps. Sort and compare countries easily.",
+      keywords: "country information, population, area, maps, compare countries, explore countries, world data, country statistics, capital cities, geographical data, country demographics, country search, global data, region information, continent data, country profiles, international data, country explorer, world facts"
+    });
   }
   ngOnDestroy(): void {
     if (this.subscription) {
