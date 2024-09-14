@@ -34,7 +34,6 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
         next: (res: Array<CountryModel>) => {
           if (res && res.length) {
             this.countryInfo = res[0];
-            console.log("COUNTRY : ", this.countryInfo);
             this.setTitle(this.countryInfo.name.common);
             this.extractCurrencies(this.countryInfo.currencies);
             this.isLoading = false;

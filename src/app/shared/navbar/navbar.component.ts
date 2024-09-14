@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy, Renderer2, Output, EventEmitter } from '@angular/core';
 import { Subscription, debounceTime } from 'rxjs';
-import { BrowserService, GameService, SidebarService, ThemeService } from '../../_services';
-import { GameList, GameListCategory } from '../../../assets/game';
-import { environment } from '../../../environments/environment';
-import { GameModel } from '../../_model';
+import { BrowserService, ThemeService } from '../../_services';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
@@ -20,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup = new FormGroup({
     query: new FormControl(null, []),
   });
-  constructor(private sidebarService: SidebarService, private router: Router, private gameService: GameService, private browserService: BrowserService, private renderer: Renderer2, private themeService: ThemeService) { }
+  constructor(private router: Router, private browserService: BrowserService, private renderer: Renderer2, private themeService: ThemeService) { }
 
   ngOnInit(): void {
     if (!this.browserService.isBrowser()) return;
@@ -34,11 +31,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   goToHome(): void {
     this.router.navigate(['/']);
-    this.sidebarService.activateMenu(-1);
-  }
-  sidebarToggle(): void {
-    this.isSidebarOpen = !this.isSidebarOpen;
-    this.sidebarService.isSidebarOpen.next(this.isSidebarOpen);
   }
   toggleTheme(): void {
     if (!this.browserService.isBrowser()) return;

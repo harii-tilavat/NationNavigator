@@ -5,24 +5,36 @@
 @import "./components/index";
 @import "./pages/index";
 @import "./responsive";
-.advertise-section {
-  .ad-body {
-    overflow: auto;
+
+.scroll-top-icon {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  border-radius: 50px;
+  background: $primary-600;
+  z-index: 1001;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  animation-name: slowUpAnimation;
+  animation-duration: 2s; /* Adjust the duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust the timing function for a smoother effect */
+  animation-iteration-count: infinite; /* Repeat the animation indefinitely */
+  opacity: 0;
+  transition: 0.2s;
+  cursor: default;
+  &.show {
+    opacity: 1;
+    cursor: pointer;
   }
-  & > div {
-    & > div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  &.ps {
+  span {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    padding: 12px;
   }
 }
-.advertise-section-ps {
-  overflow: hidden;
-}
+

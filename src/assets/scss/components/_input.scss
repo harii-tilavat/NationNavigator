@@ -17,10 +17,7 @@ form {
     }
   }
   .search-input {
-    height: 100%;
-    @include font-size(14px);
-    // @include padding(16px 40px);
-    padding: 17px 40px;
+    padding-left: 40px;
   }
   .search-label {
     position: absolute;
@@ -95,7 +92,7 @@ form {
   }
   @include themed() {
     &::after {
-      border: solid t($input-border);
+      border: solid $gray-300;
       border-width: 0 2px 2px 0;
     }
   }

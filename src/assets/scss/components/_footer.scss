@@ -20,7 +20,7 @@
         cursor: pointer;
       }
       .footer-header {
-        @include padding(48px 12px 24px 12px);
+        @include padding(48px 12px 0px 12px);
         .footer-header-content {
           display: flex;
           justify-content: space-between;
@@ -163,7 +163,6 @@
             align-items: center;
             .footer-logo {
               height: 40px;
-              max-width: 180px;
             }
             .footer-links {
               ul {

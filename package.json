@@ -17,7 +17,8 @@
   "svg-to-ts": {
     "srcFiles": [
       "./src/assets/icons/*.svg",
-      "./src/assets/icons/extra/*.svg"
+      "./src/assets/icons/extra/*.svg",
+      "./src/assets/icons/social/*.svg"
     ],
     "outputDirectory": "./src/assets/svg-icon",
     "interfaceName": "TmdIcon",

@@ -4,19 +4,19 @@
       <div class="row">
         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="footer-inner-container">
-            <div class="footer-top-icon" (click)="scrollTop()">
+            <!-- <div class="footer-top-icon" (click)="scrollTop()">
               <span>
                 <i class="fa-solid fa-angle-up"></i>
               </span>
-            </div>
+            </div> -->
             <div class="footer-header">
-              <div class="footer-header-content flex-column flex-sm-row">
+              <div class="footer-header-content flex-column flex-sm-row justify-content-center">
                 <div class="footer-logo" (click)="goToPage(['/'])">
                   <span>
                     <img [src]="logoUrl" alt="Nation Navigator">
                   </span>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links" *ngIf="false">
                   <ul class="flex-column flex-sm-row">
                     <li (click)="goToPage(['/hop/privacy-policy'])">Privacy Policy</li>
                     <li (click)="goToPage(['/hop/terms-condition'])">Terms & Conditions</li>
@@ -30,17 +30,15 @@
                 <div class="row">
                   <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12 col-sm-12">
                     <div class="footer-body-text">
-                      <p>The largest collection of online games, we offer a seamless online platform for the best
-                        playing experience on different devices for everything. Easy to use and play for fun,
-                        relaxation, and reduce stress. Open and free.</p>
-                      <p>Best place to engage and browse different games to expand your gaming skills. Let`s play!</p>
+                      <p>Explore detailed information about countries around the world, including population, area, and more. Stay informed with easy-to-use sorting and dynamic map links for every country.</p>
+                      <p>Built with <strong>Angular</strong>, <strong>Typescript</strong>, <strong>SCSS</strong> , and external APIs.</p>
                     </div>
                   </div>
                   <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12">
                     <div class="footer-contact">
                       <div class="footer-contact-container ">
                         <div class="contact-title">
-                          <span>Contact Us</span>
+                          <span>Contact me</span>
                         </div>
                         <div class="contact-subtitle">
                           <span>Email : <a [href]="'mailto:' + emailLink">{{emailLink}}</a></span>
@@ -48,11 +46,11 @@
                         <div class="contact-links">
                           <ul>
                             <li *ngFor="let item of contactLinks">
-                              <a [href]="item.enum ==='EMAIL'?'mailto: ' + item.link: item.link" target="_blank"
-                                 class="text-inherit">
+                              <a [href]="item.enum ==='EMAIL'?'mailto: ' + item.link: item.link" target="_blank" class="text-inherit" [title]="item.title">
                                 <div class="contact-link link-email">
                                   <span>
-                                    <i [class]="item.icon"></i>
+                                    <!-- <i [class]="item.icon"></i> -->
+                                    <tmd-icon [name]="item.icon"></tmd-icon>
                                   </span>
                                 </div>
                               </a>
@@ -72,7 +70,8 @@
   </div>
   <div class="copy-right-section p-4 text-center">
     <div class="copy-right-title">
-      <span>Copyright {{year}} {{website}} LLC, All Rights Reserved.</span>
+      <!-- <span>Copyright {{year}} {{website}} LLC, All Rights Reserved.</span> -->
+      <p class="p-0">Developed by <a href="https://hariitilavat.web.app/" target="_blank">Harit Tilavat</a>. 🚀💻 </p>
     </div>
   </div>
 </div>

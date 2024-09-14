@@ -1,10 +1,4 @@
-<!-- Layout component -->
+<!-- App component -->
 <div class="router-section">
   <router-outlet></router-outlet>
 </div>
-
-<div class="coockie-section" *ngIf="!isAccepted && isPopupShow && false"><!---->
-  <!-- <h1>{{"isPopupShow ==> "+ isPopupShow}}</h1> -->
-  <app-coockie-popup (coockieEvent)="isCookieAccepted()"></app-coockie-popup>
-</div>
-

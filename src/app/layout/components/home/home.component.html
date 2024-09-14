@@ -5,10 +5,10 @@
         <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-6 col-sm-6 col-12">
           <div class="search-header-input ">
             <form class="form" [formGroup]="searchForm">
-              <input type="text" name="search" id="search" class="form-control search-input-not" placeholder="Enter country name..." formControlName="query">
+              <input type="text" name="search" id="search" class="form-control search-input" placeholder="Enter country name..." formControlName="query">
               <label for="search" class="search-label">
                 <span class="search-icon">
-                  <!-- <tmd-icon name="search"></tmd-icon> -->
+                  <tmd-icon name="search"></tmd-icon>
                 </span>
               </label>
             </form>
@@ -34,7 +34,7 @@
             <div class="row g-4">
               <ng-container *ngIf="!isLoading; else showLoader">
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" *ngFor="let item of displayCountryList">
-                  <div class="country-card-container">
+                  <div class="country-card-container h-100">
                     <app-country-card [countryInfo]="item"></app-country-card>
                   </div>
                 </div>
@@ -65,41 +65,6 @@
                   </div>
                 </div>
               </ng-container>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="about-container py-3 layout-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="about-section">
-            <div class="about-container">
-              <div class="about-card">
-                <div class="about-card-header">
-                  <div class="about-card-header-title">
-                    <span class="inter-semibold font-4">Your Guide to World Countries</span>
-                  </div>
-                </div>
-                <div class="about-card-body">
-                  <!-- <p>Users can browse a comprehensive list of countries, viewing essential details like names, populations, and areas. The application presents data in an organized and easy-to-read format, allowing users to quickly find information on any country.</p>
-
-                  <p>The sorting feature lets users arrange the list by name, population, or area. They can choose to sort in ascending or descending order, making it simple to view countries based on their preferred criteria.</p>
-
-                  <p>The application is designed to be responsive, ensuring a smooth experience across various devices. Users can interact with dropdowns and sorting buttons seamlessly on desktops, tablets, and smartphones.</p>
-
-                  <p>Overall, Country Finder offers a user-friendly interface for exploring global country data, with flexible sorting options and a responsive design for easy navigation.</p> -->
-                  <!-- <h3>Your Guide to World Countries</h3> -->
-                  <p>1. <strong>Search for Any Country:</strong> Type the name of any country to quickly get detailed information.</p>
-                  <p>2. <strong>Sort by Criteria:</strong> Organize the country list by name, population, or area with just a click.</p>
-                  <p>3. <strong>Customizable Order:</strong> Choose to view the countries in ascending or descending order.</p>
-                  <p>4. <strong>Explore on the Map:</strong> View the location of each country on an interactive map.</p>
-                  <p>5. <strong>User-Friendly Interface:</strong> Enjoy an easy and intuitive search experience to find any country.</p>
-
-                </div>
-              </div>
             </div>
           </div>
         </div>
